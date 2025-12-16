@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOAO Studio - AI Technology Company</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-studio-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-studio-link:hover {
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #1d4ed8;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 2rem;
+            background: #f9fafb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e5e5e5;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-link {
+            display: inline-block;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .product-link:hover {
+            color: #1d4ed8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+
+        .about-content p {
+            font-size: 1.125rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Technology Section */
+        .technology {
+            padding: 5rem 2rem;
+            background: #f9fafb;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e5e5e5;
+            text-align: center;
+        }
+
+        .tech-item h4 {
+            font-size: 1.125rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #2563eb;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #999;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: #2563eb;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">AOAO Studio</div>
+            <a href="https://aoao-studio-code.onrender.com/home" class="nav-studio-link">OLG AI Studio</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Building Better Technology</h1>
+        <p>젊은 개발자들이 만드는 실용적인 소프트웨어. 우리는 사람들이 실제로 필요로 하는 도구를 만듭니다.</p>
+    </section>
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>OLG AI Studio</h3>
+                    <p>다양한 AI 기능을 하나의 플랫폼에서. 실무에 필요한 도구들을 통합한 웹 애플리케이션입니다.</p>
+                    <a href="https://aoao-studio-code.onrender.com/home" class="product-link">자세히 보기 →</a>
+                </div>
+                <div class="product-card">
+                    <h3>OLG 3.1 Chat</h3>
+                    <p>대화형 인터페이스. 텍스트와 이미지를 처리하고, 자연스러운 대화로 작업을 수행합니다.</p>
+                    <a href="https://aoao-studio-code.onrender.com/chat" class="product-link">시작하기 →</a>
+                </div>
+                <div class="product-card">
+                    <h3>Model Hub</h3>
+                    <p>모델 공유 플랫폼. 커뮤니티와 함께 리소스를 탐색하고, 실험하고, 공유합니다.</p>
+                    <a href="https://aoao-studio-code.onrender.com/models" class="product-link">둘러보기 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>About AOAO Studio</h2>
+            <p>AOAO Studio는 2명의 젊은 개발자가 시작한 IT 소프트웨어 회사입니다. 우리는 웹 기술과 최신 개발 도구를 활용해 실용적인 애플리케이션을 만듭니다.</p>
+            <p>화려한 마케팅 대신 실제로 작동하는 제품을, 복잡한 인터페이스 대신 직관적인 경험을 만듭니다. 작은 팀이지만, 우리는 사용자가 진짜 필요로 하는 기능을 빠르게 개발하고 개선합니다.</p>
+            <p>Python, Flask, FastAPI를 기반으로 한 백엔드와 현대적인 프론트엔드 기술을 사용하여, 안정적이고 확장 가능한 웹 플랫폼을 구축하고 있습니다.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Team Members</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Products</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Service Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="technology" class="technology">
+        <div class="container">
+            <h2 class="section-title">Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Backend</h4>
+                    <p>Python, Flask, FastAPI</p>
+                </div>
+                <div class="tech-item">
+                    <h4>API Integration</h4>
+                    <p>RESTful APIs, Third-party Services</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Database</h4>
+                    <p>PostgreSQL, SQLite</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Deployment</h4>
+                    <p>Render, Cloud Platform</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Frontend</h4>
+                    <p>Modern Web Technologies</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Real-time</h4>
+                    <p>WebSocket, Live Updates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AOAO Studio</h3>
+                <p>실용적인 소프트웨어 솔루션</p>
+            </div>
+            <div class="footer-section">
+                <h3>Products</h3>
+                <a href="https://aoao-studio-code.onrender.com/home">OLG AI Studio</a>
+                <a href="https://aoao-studio-code.onrender.com/chat">OLG 3.1 Chat</a>
+                <a href="https://aoao-studio-code.onrender.com/models">Model Hub</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="#">Documentation</a>
+                <a href="#">API Reference</a>
+                <a href="#">Community</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>GitHub: AOAO Studio</p>
+                <p>Email: contact@aostudio.dev</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AOAO Studio. Built by young developers.</p>
+        </div>
+    </footer>
+</body>
+</html>
