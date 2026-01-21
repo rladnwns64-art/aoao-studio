@@ -61,15 +61,23 @@
             color: #2563eb;
         }
 
+        .nav-studio-links {
+            display: flex;
+            gap: 1rem;
+        }
+
         .nav-studio-link {
             color: #333;
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
         }
 
         .nav-studio-link:hover {
             color: #2563eb;
+            background: #f0f7ff;
         }
 
         /* Hero Section */
@@ -311,6 +319,11 @@
                 display: none;
             }
 
+            .nav-studio-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
             .section-title {
                 font-size: 2rem;
             }
@@ -321,7 +334,10 @@
     <header>
         <nav>
             <div class="logo">AOAO Studio</div>
-            <a href="https://aoao-studio-code.onrender.com/home" class="nav-studio-link">olg ai studio</a>
+            <div class="nav-studio-links">
+                <a href="https://aoao-studio-code.onrender.com/home" class="nav-studio-link">olg ai studio</a>
+                <a href="https://aoao-gmae-studio.onrender.com/" class="nav-studio-link">game studio</a>
+            </div>
         </nav>
     </header>
 
