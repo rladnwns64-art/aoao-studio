@@ -55,8 +55,8 @@
             letter-spacing: -0.03em;
         }
 
-        /* 텍스트형 드롭다운 */
-        .services-nav { position: relative; }
+        /* 메가 드롭다운 */
+        .services-nav { position: static; }
 
         .services-trigger {
             display: flex;
@@ -83,19 +83,18 @@
         .services-nav:hover .chevron { transform: rotate(180deg); }
 
         .dropdown {
-            position: absolute;
-            top: calc(100% + 12px);
-            right: 0;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
             background: white;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 20px 50px -10px rgba(0,0,0,0.15);
-            min-width: 255px;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-6px);
-            transition: all 0.18s ease;
-            overflow: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+            z-index: 99;
         }
 
         .services-nav:hover .dropdown {
@@ -104,50 +103,96 @@
             transform: translateY(0);
         }
 
-        .dd-label {
-            padding: 0.75rem 1.1rem 0.4rem;
+        .mega-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.8rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .mega-label {
+            grid-column: 1 / -1;
             font-size: 0.68rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: #94a3b8;
+            margin-bottom: 0.3rem;
         }
 
         .dd-item {
             display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            padding: 0.7rem 1.1rem;
+            flex-direction: column;
+            gap: 0.7rem;
+            padding: 1.1rem;
             text-decoration: none;
             color: var(--text);
-            transition: background 0.12s;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.15s;
+            background: var(--subtle);
         }
 
-        .dd-item:hover { background: var(--blue-light); }
-        .dd-item:hover .dd-name { color: var(--blue); }
+        .dd-item:hover {
+            background: var(--blue-light);
+            border-color: rgba(37,99,235,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.1);
+        }
 
-        .dd-sep { height: 1px; background: var(--border); margin: 0.3rem 0; }
+        .dd-item:hover .dd-name { color: var(--blue); }
+        .dd-item:hover .dd-arrow { opacity: 1; transform: translateX(3px); }
+
+        .dd-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
         .dd-icon {
-            width: 34px; height: 34px;
-            border-radius: 8px;
-            background: var(--subtle);
+            width: 36px; height: 36px;
+            border-radius: 9px;
+            background: white;
             border: 1px solid var(--border);
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.95rem;
-            flex-shrink: 0;
+            font-size: 1rem;
+        }
+
+        .dd-arrow {
+            font-size: 0.8rem;
+            color: var(--blue);
+            opacity: 0;
+            transition: all 0.15s;
         }
 
         .dd-name {
-            font-weight: 600;
-            font-size: 0.87rem;
+            font-weight: 700;
+            font-size: 0.88rem;
             transition: color 0.12s;
         }
 
         .dd-desc {
-            font-size: 0.73rem;
+            font-size: 0.76rem;
             color: var(--muted);
-            margin-top: 1px;
+            line-height: 1.5;
+        }
+
+        .dd-tag {
+            display: inline-block;
+            font-size: 0.63rem;
+            font-weight: 700;
+            padding: 0.12rem 0.45rem;
+            border-radius: 100px;
+            background: rgba(37,99,235,0.1);
+            color: var(--blue);
+            letter-spacing: 0.04em;
+        }
+
+        .dd-tag.green {
+            background: rgba(34,197,94,0.1);
+            color: #16a34a;
         }
 
         /* ── HERO ── */
@@ -665,30 +710,45 @@
                     운영 서비스 <span class="chevron">▼</span>
                 </button>
                 <div class="dropdown">
-                    <div class="dd-label">서비스 목록</div>
-                    <a href="https://aoao-studio-code.onrender.com/home" class="dd-item" target="_blank">
-                        <div class="dd-icon">🤖</div>
-                        <div>
+                    <div class="mega-inner">
+                        <div class="mega-label">운영 중인 서비스</div>
+                        <a href="https://aoao-studio-code.onrender.com/home" class="dd-item" target="_blank">
+                            <div class="dd-top">
+                                <div class="dd-icon">🤖</div>
+                                <span class="dd-arrow">→</span>
+                            </div>
                             <div class="dd-name">OLG AI Studio</div>
-                            <div class="dd-desc">통합 AI 플랫폼</div>
-                        </div>
-                    </a>
-                    <div class="dd-sep"></div>
-                    <a href="https://aoao-gmae-studio.onrender.com/" class="dd-item" target="_blank">
-                        <div class="dd-icon">🎮</div>
-                        <div>
+                            <div class="dd-desc">다양한 AI 기능을 하나의 플랫폼에서 사용할 수 있는 통합 웹 앱</div>
+                            <span class="dd-tag">AI · 플랫폼</span>
+                        </a>
+                        <a href="https://aoao-gmae-studio.onrender.com/" class="dd-item" target="_blank">
+                            <div class="dd-top">
+                                <div class="dd-icon">🎮</div>
+                                <span class="dd-arrow">→</span>
+                            </div>
                             <div class="dd-name">Game Studio</div>
-                            <div class="dd-desc">웹 게임 플랫폼</div>
-                        </div>
-                    </a>
-                    <div class="dd-sep"></div>
-                    <a href="https://aoao-studio-data.onrender.com/" class="dd-item" target="_blank">
-                        <div class="dd-icon">🗄️</div>
-                        <div>
+                            <div class="dd-desc">브라우저에서 바로 플레이할 수 있는 웹 기반 게임 플랫폼</div>
+                            <span class="dd-tag">게임 · 웹</span>
+                        </a>
+                        <a href="https://aoao-studio-data.onrender.com/" class="dd-item" target="_blank">
+                            <div class="dd-top">
+                                <div class="dd-icon">🗄️</div>
+                                <span class="dd-arrow">→</span>
+                            </div>
                             <div class="dd-name">AOAO Data</div>
-                            <div class="dd-desc">데이터 관리 서비스</div>
-                        </div>
-                    </a>
+                            <div class="dd-desc">팀의 데이터를 효율적으로 저장하고 관리하는 데이터 서비스</div>
+                            <span class="dd-tag">데이터 · 관리</span>
+                        </a>
+                        <a href="https://aoao-studio-state.onrender.com/" class="dd-item" target="_blank">
+                            <div class="dd-top">
+                                <div class="dd-icon">📡</div>
+                                <span class="dd-arrow">→</span>
+                            </div>
+                            <div class="dd-name">서버 상태 확인</div>
+                            <div class="dd-desc">AOAO Studio 전체 서비스의 실시간 서버 상태를 모니터링</div>
+                            <span class="dd-tag green">🟢 실시간 모니터링</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -876,7 +936,7 @@
                 <div class="f-col">
                     <h4>Contact</h4>
                     <p>GitHub: AOAO Studio</p>
-                    <p>contact@aostudio.dev</p>
+                    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a7975746e7b796e5a7b75696e6f7e7375347e7f6c">[email&#160;protected]</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -886,7 +946,7 @@
         </div>
     </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const lines = [
         { type: 'prompt', text: 'python aoao_studio.py' },
         { type: 'comment', text: '# AOAO Studio v2.0 initializing...' },
@@ -1026,7 +1086,6 @@
             await new Promise(r => setTimeout(r, line.type === 'blank' ? 80 : 120));
             body.scrollTop = body.scrollHeight;
         }
-        // loop after delay
         setTimeout(() => {
             body.innerHTML = '';
             run();
@@ -1036,3 +1095,4 @@
     run();
 </script>
 </body>
+</html>
