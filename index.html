@@ -17,6 +17,8 @@
             --border: #e2e8f0;
             --bg: #ffffff;
             --subtle: #f8fafc;
+            --pink: #ec4899;
+            --pink-light: #fdf2f8;
         }
 
         html { scroll-behavior: smooth; }
@@ -55,7 +57,6 @@
             letter-spacing: -0.03em;
         }
 
-        /* 메가 드롭다운 */
         .services-nav { position: static; }
 
         .services-trigger {
@@ -108,7 +109,7 @@
             margin: 0 auto;
             padding: 1.8rem 2rem;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 1rem;
         }
 
@@ -142,8 +143,16 @@
             box-shadow: 0 6px 20px rgba(37,99,235,0.1);
         }
 
+        .dd-item.pink:hover {
+            background: var(--pink-light);
+            border-color: rgba(236,72,153,0.25);
+            box-shadow: 0 6px 20px rgba(236,72,153,0.1);
+        }
+
         .dd-item:hover .dd-name { color: var(--blue); }
+        .dd-item.pink:hover .dd-name { color: var(--pink); }
         .dd-item:hover .dd-arrow { opacity: 1; transform: translateX(3px); }
+        .dd-item.pink:hover .dd-arrow { color: var(--pink); opacity: 1; transform: translateX(3px); }
 
         .dd-top {
             display: flex;
@@ -193,6 +202,11 @@
         .dd-tag.green {
             background: rgba(34,197,94,0.1);
             color: #16a34a;
+        }
+
+        .dd-tag.pink {
+            background: rgba(236,72,153,0.12);
+            color: var(--pink);
         }
 
         /* ── HERO ── */
@@ -375,6 +389,7 @@
         .t-var { color: #ffa657; }
         .t-out { color: #3fb950; }
         .t-dim { color: #484f58; }
+        .t-pink { color: #f472b6; }
 
         .cursor {
             display: inline-block;
@@ -488,10 +503,19 @@
             transition: opacity 0.25s;
         }
 
+        .product-card.pink-card::after {
+            background: linear-gradient(90deg, var(--pink), #f9a8d4);
+        }
+
         .product-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.09);
             border-color: rgba(37,99,235,0.2);
+        }
+
+        .product-card.pink-card:hover {
+            border-color: rgba(236,72,153,0.2);
+            box-shadow: 0 12px 40px rgba(236,72,153,0.08);
         }
 
         .product-card:hover::after { opacity: 1; }
@@ -504,6 +528,8 @@
             font-size: 1.3rem;
             margin-bottom: 1.2rem;
         }
+
+        .p-icon.pink { background: var(--pink-light); }
 
         .product-card h3 {
             font-size: 1.1rem;
@@ -530,7 +556,23 @@
             transition: gap 0.2s;
         }
 
+        .p-link.pink { color: var(--pink); }
         .p-link:hover { gap: 0.55rem; }
+
+        /* NEW badge */
+        .new-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 0.1rem 0.4rem;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--pink), #f97316);
+            color: white;
+            letter-spacing: 0.05em;
+            vertical-align: middle;
+            margin-left: 0.4rem;
+            text-transform: uppercase;
+        }
 
         /* ── ABOUT ── */
         .about { padding: 7rem 2rem; }
@@ -689,6 +731,7 @@
         @media (max-width: 1024px) {
             .hero-right { display: none; }
             .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .mega-inner { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -696,6 +739,7 @@
             .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
             .footer-bottom { flex-direction: column; gap: 0.4rem; text-align: center; }
             .about-stats { grid-template-columns: 1fr; }
+            .mega-inner { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -748,6 +792,15 @@
                             <div class="dd-desc">애니메이션 타이포그래피를 전문적으로 제작할 수 있는 크리에이티브 툴</div>
                             <span class="dd-tag">타이포 · 애니메이션</span>
                         </a>
+                        <a href="https://aoao-studio-zeta.onrender.com/" class="dd-item pink" target="_blank">
+                            <div class="dd-top">
+                                <div class="dd-icon">💕</div>
+                                <span class="dd-arrow">→</span>
+                            </div>
+                            <div class="dd-name">AI Girlfriend</div>
+                            <div class="dd-desc">AI와 여친처럼 자연스럽게 대화할 수 있는 감성 채팅 서비스</div>
+                            <span class="dd-tag pink">💬 감성 · 대화</span>
+                        </a>
                         <a href="https://aoao-studio-state.onrender.com/" class="dd-item" target="_blank">
                             <div class="dd-top">
                                 <div class="dd-icon">📡</div>
@@ -770,7 +823,7 @@
         <div class="hero-inner">
             <div class="hero-left">
                 <div class="hero-badge">
-                    <span class="pulse"></span> 4개 서비스 운영 중
+                    <span class="pulse"></span> 5개 서비스 운영 중
                 </div>
                 <h1>
                     Building<br>
@@ -808,7 +861,7 @@
                 <div class="stat-lbl">Team Members</div>
             </div>
             <div class="stat">
-                <div class="stat-num">4<span class="u">+</span></div>
+                <div class="stat-num">5<span class="u">+</span></div>
                 <div class="stat-lbl">Products</div>
             </div>
             <div class="stat">
@@ -846,6 +899,12 @@
                 <p>모델 공유 플랫폼. 커뮤니티와 함께 리소스를 탐색하고, 실험하고, 공유합니다.</p>
                 <a href="https://aoao-studio-code.onrender.com/models" class="p-link" target="_blank">둘러보기 →</a>
             </div>
+            <div class="product-card pink-card">
+                <div class="p-icon pink">💕</div>
+                <h3>AI Girlfriend <span class="new-badge">NEW</span></h3>
+                <p>AI와 여친처럼 대화하는 감성 채팅 서비스. 자연스럽고 따뜻한 대화 경험을 제공합니다.</p>
+                <a href="https://aoao-studio-zeta.onrender.com/" class="p-link pink" target="_blank">대화 시작하기 →</a>
+            </div>
             <div class="product-card">
                 <div class="p-icon">✍️</div>
                 <h3>AOAO Type Studio</h3>
@@ -877,7 +936,7 @@
                     <div class="l">Team</div>
                 </div>
                 <div class="a-stat">
-                    <div class="n">4+</div>
+                    <div class="n">5+</div>
                     <div class="l">Products</div>
                 </div>
                 <div class="a-stat">
@@ -940,6 +999,7 @@
                     <a href="https://aoao-studio-code.onrender.com/home" target="_blank">OLG AI Studio</a>
                     <a href="https://aoao-studio-code.onrender.com/chat" target="_blank">OLG 3.1 Chat</a>
                     <a href="https://aoao-studio-code.onrender.com/models" target="_blank">Model Hub</a>
+                    <a href="https://aoao-studio-zeta.onrender.com/" target="_blank">AI Girlfriend 💕</a>
                     <a href="https://aoao-studio-typo.onrender.com/" target="_blank">AOAO Type Studio</a>
                     <a href="https://aoao-studio-data.onrender.com/" target="_blank">AOAO Data</a>
                 </div>
@@ -952,7 +1012,7 @@
                 <div class="f-col">
                     <h4>Contact</h4>
                     <p>GitHub: AOAO Studio</p>
-                    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a7975746e7b796e5a7b75696e6f7e7375347e7f6c">[email&#160;protected]</a></p>
+                    <p>aoao@aoao.studio</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -962,10 +1022,10 @@
         </div>
     </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     const lines = [
         { type: 'prompt', text: 'python aoao_studio.py' },
-        { type: 'comment', text: '# AOAO Studio v2.0 initializing...' },
+        { type: 'comment', text: '# AOAO Studio v2.1 initializing...' },
         { type: 'code', parts: [
             { cls: 't-keyword', t: 'from' },
             { cls: 't-cmd', t: ' aoao ' },
@@ -977,6 +1037,12 @@
             { cls: 't-cmd', t: ' games ' },
             { cls: 't-keyword', t: 'import' },
             { cls: 't-cmd', t: ' GameEngine' },
+        ]},
+        { type: 'code', parts: [
+            { cls: 't-keyword', t: 'from' },
+            { cls: 't-cmd', t: ' zeta ' },
+            { cls: 't-keyword', t: 'import' },
+            { cls: 't-pink', t: ' AIGirlfriend' },
         ]},
         { type: 'blank' },
         { type: 'code', parts: [
@@ -1000,13 +1066,13 @@
         { type: 'out', text: '✓ Game Studio      running on :8001' },
         { type: 'out', text: '✓ AOAO Data        running on :8002' },
         { type: 'out', text: '✓ Type Studio      running on :8003' },
+        { type: 'pink', text: '✓ AI Girlfriend    running on :8004 💕' },
         { type: 'blank' },
-        { type: 'dim', text: '4 services online. Ready.' },
+        { type: 'dim', text: '5 services online. Ready.' },
         { type: 'cursor' },
     ];
 
     const body = document.getElementById('terminalBody');
-    let lineIdx = 0;
 
     function renderLine(line) {
         const div = document.createElement('div');
@@ -1038,6 +1104,9 @@
         if (line.type === 'out') {
             return typeLine(div, `<span class="t-out">${line.text}</span>`);
         }
+        if (line.type === 'pink') {
+            return typeLine(div, `<span class="t-pink">${line.text}</span>`);
+        }
         if (line.type === 'dim') {
             return typeLine(div, `<span class="t-dim">${line.text}</span>`);
         }
@@ -1049,16 +1118,11 @@
 
     function typeLine(el, html) {
         return new Promise(resolve => {
-            // strip html to get plain length, then reveal char by char via clip
             el.innerHTML = html;
-            el.style.overflow = 'hidden';
             const full = el.innerText.length;
-            let i = 0;
-            const speed = 28;
             const tmp = document.createElement('div');
             tmp.innerHTML = html;
 
-            // We'll just fade-in instantly for multi-span lines, type for simple ones
             if (!html.includes('<span') || html.split('<span').length <= 2) {
                 el.innerHTML = '';
                 const textEl = document.createElement('span');
@@ -1071,13 +1135,11 @@
                     textEl.innerText += plain[ci];
                     ci++;
                     if (ci >= plain.length) { clearInterval(iv); resolve(); }
-                }, speed);
+                }, 28);
             } else {
-                // multi-span: type char by char across spans
                 const spans = [];
                 tmp.querySelectorAll('span').forEach(s => spans.push({ cls: s.className, text: s.innerText }));
                 el.innerHTML = '';
-                let si = 0, ci2 = 0;
                 const allChars = [];
                 spans.forEach((s, idx) => [...s.text].forEach(c => allChars.push({ c, sIdx: idx })));
                 const spanEls = spans.map(s => {
@@ -1092,7 +1154,7 @@
                     const { c, sIdx } = allChars[ac];
                     spanEls[sIdx].innerText += c;
                     ac++;
-                }, speed);
+                }, 28);
             }
         });
     }
