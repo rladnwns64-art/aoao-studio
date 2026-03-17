@@ -109,7 +109,7 @@
             margin: 0 auto;
             padding: 1.8rem 2rem;
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(7, 1fr);
             gap: 1rem;
         }
 
@@ -149,10 +149,18 @@
             box-shadow: 0 6px 20px rgba(236,72,153,0.1);
         }
 
+        .dd-item.purple:hover {
+            background: #faf5ff;
+            border-color: rgba(139,92,246,0.25);
+            box-shadow: 0 6px 20px rgba(139,92,246,0.1);
+        }
+
         .dd-item:hover .dd-name { color: var(--blue); }
         .dd-item.pink:hover .dd-name { color: var(--pink); }
+        .dd-item.purple:hover .dd-name { color: #7c3aed; }
         .dd-item:hover .dd-arrow { opacity: 1; transform: translateX(3px); }
         .dd-item.pink:hover .dd-arrow { color: var(--pink); opacity: 1; transform: translateX(3px); }
+        .dd-item.purple:hover .dd-arrow { color: #7c3aed; opacity: 1; transform: translateX(3px); }
 
         .dd-top {
             display: flex;
@@ -207,6 +215,11 @@
         .dd-tag.pink {
             background: rgba(236,72,153,0.12);
             color: var(--pink);
+        }
+
+        .dd-tag.purple {
+            background: rgba(139,92,246,0.12);
+            color: #7c3aed;
         }
 
         /* ── HERO ── */
@@ -377,19 +390,20 @@
             min-height: 260px;
         }
 
-        .t-line { display: flex; gap: 0.5rem; opacity: 0; }
+        .t-line { display: flex; gap: 0.5rem; opacity: 0; align-items: center; }
         .t-line.visible { opacity: 1; }
 
-        .t-prompt { color: #2563eb; user-select: none; }
-        .t-cmd { color: #e6edf3; }
-        .t-comment { color: #484f58; }
-        .t-string { color: #a5d6ff; }
-        .t-keyword { color: #ff7b72; }
-        .t-func { color: #d2a8ff; }
-        .t-var { color: #ffa657; }
-        .t-out { color: #3fb950; }
-        .t-dim { color: #484f58; }
-        .t-pink { color: #f472b6; }
+        .t-prompt { color: #4d9fff; user-select: none; }
+        .t-cmd { color: #ffffff; }
+        .t-comment { color: #adbac7; }
+        .t-string { color: #6cb6ff; }
+        .t-keyword { color: #f47067; }
+        .t-func { color: #dcbdfb; }
+        .t-var { color: #f69d50; }
+        .t-out { color: #57d96a; }
+        .t-dim { color: #57d96a; }
+        .t-pink { color: #ff85c8; }
+        .t-purple { color: #ce93f8; }
 
         .cursor {
             display: inline-block;
@@ -507,6 +521,10 @@
             background: linear-gradient(90deg, var(--pink), #f9a8d4);
         }
 
+        .product-card.purple-card::after {
+            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+        }
+
         .product-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.09);
@@ -516,6 +534,11 @@
         .product-card.pink-card:hover {
             border-color: rgba(236,72,153,0.2);
             box-shadow: 0 12px 40px rgba(236,72,153,0.08);
+        }
+
+        .product-card.purple-card:hover {
+            border-color: rgba(124,58,237,0.2);
+            box-shadow: 0 12px 40px rgba(124,58,237,0.08);
         }
 
         .product-card:hover::after { opacity: 1; }
@@ -530,6 +553,7 @@
         }
 
         .p-icon.pink { background: var(--pink-light); }
+        .p-icon.purple { background: #f5f3ff; }
 
         .product-card h3 {
             font-size: 1.1rem;
@@ -557,6 +581,7 @@
         }
 
         .p-link.pink { color: var(--pink); }
+        .p-link.purple { color: #7c3aed; }
         .p-link:hover { gap: 0.55rem; }
 
         /* NEW badge */
@@ -810,6 +835,15 @@
                             <div class="dd-desc">AOAO Studio 전체 서비스의 실시간 서버 상태를 모니터링</div>
                             <span class="dd-tag green">🟢 실시간 모니터링</span>
                         </a>
+                        <a href="https://aoao-studio-auth.onrender.com/" class="dd-item purple" target="_blank">
+                            <div class="dd-top">
+                                <div class="dd-icon">🔐</div>
+                                <span class="dd-arrow">→</span>
+                            </div>
+                            <div class="dd-name">계정 관리</div>
+                            <div class="dd-desc">AOAO Studio 통합 계정을 관리하고 설정할 수 있는 인증 서비스</div>
+                            <span class="dd-tag purple">🔑 계정 · 인증</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -917,6 +951,12 @@
                 <p>데이터 관리 서비스. 팀의 데이터를 효율적으로 저장하고 관리할 수 있는 플랫폼입니다.</p>
                 <a href="https://aoao-studio-data.onrender.com/" class="p-link" target="_blank">시작하기 →</a>
             </div>
+            <div class="product-card purple-card">
+                <div class="p-icon purple">🔐</div>
+                <h3>계정 관리</h3>
+                <p>AOAO Studio 통합 계정을 관리하고 설정할 수 있는 인증 서비스. 로그인, 회원가입, 프로필을 한 곳에서.</p>
+                <a href="https://aoao-studio-auth.onrender.com/" class="p-link purple" target="_blank">계정 관리하기 →</a>
+            </div>
         </div>
     </section>
 
@@ -1002,6 +1042,7 @@
                     <a href="https://aoao-studio-zeta.onrender.com/" target="_blank">AI Girlfriend 💕</a>
                     <a href="https://aoao-studio-typo.onrender.com/" target="_blank">AOAO Type Studio</a>
                     <a href="https://aoao-studio-data.onrender.com/" target="_blank">AOAO Data</a>
+                    <a href="https://aoao-studio-auth.onrender.com/" target="_blank">계정 관리 🔐</a>
                 </div>
                 <div class="f-col">
                     <h4>Resources</h4>
@@ -1044,6 +1085,12 @@
             { cls: 't-keyword', t: 'import' },
             { cls: 't-pink', t: ' AIGirlfriend' },
         ]},
+        { type: 'code', parts: [
+            { cls: 't-keyword', t: 'from' },
+            { cls: 't-cmd', t: ' auth ' },
+            { cls: 't-keyword', t: 'import' },
+            { cls: 't-purple', t: ' AccountManager' },
+        ]},
         { type: 'blank' },
         { type: 'code', parts: [
             { cls: 't-var', t: 'studio' },
@@ -1067,8 +1114,9 @@
         { type: 'out', text: '✓ AOAO Data        running on :8002' },
         { type: 'out', text: '✓ Type Studio      running on :8003' },
         { type: 'pink', text: '✓ AI Girlfriend    running on :8004 💕' },
+        { type: 'purple', text: '✓ Account Manager  running on :8005 🔐' },
         { type: 'blank' },
-        { type: 'dim', text: '5 services online. Ready.' },
+        { type: 'dim', text: '6 services online. Ready.' },
         { type: 'cursor' },
     ];
 
@@ -1107,6 +1155,9 @@
         if (line.type === 'pink') {
             return typeLine(div, `<span class="t-pink">${line.text}</span>`);
         }
+        if (line.type === 'purple') {
+            return typeLine(div, `<span class="t-purple">${line.text}</span>`);
+        }
         if (line.type === 'dim') {
             return typeLine(div, `<span class="t-dim">${line.text}</span>`);
         }
@@ -1118,44 +1169,26 @@
 
     function typeLine(el, html) {
         return new Promise(resolve => {
-            el.innerHTML = html;
-            const full = el.innerText.length;
             const tmp = document.createElement('div');
             tmp.innerHTML = html;
-
-            if (!html.includes('<span') || html.split('<span').length <= 2) {
-                el.innerHTML = '';
-                const textEl = document.createElement('span');
-                textEl.innerHTML = html;
-                el.appendChild(textEl);
-                const plain = textEl.innerText;
-                textEl.innerText = '';
-                let ci = 0;
-                const iv = setInterval(() => {
-                    textEl.innerText += plain[ci];
-                    ci++;
-                    if (ci >= plain.length) { clearInterval(iv); resolve(); }
-                }, 28);
-            } else {
-                const spans = [];
-                tmp.querySelectorAll('span').forEach(s => spans.push({ cls: s.className, text: s.innerText }));
-                el.innerHTML = '';
-                const allChars = [];
-                spans.forEach((s, idx) => [...s.text].forEach(c => allChars.push({ c, sIdx: idx })));
-                const spanEls = spans.map(s => {
-                    const sp = document.createElement('span');
-                    sp.className = s.cls;
-                    el.appendChild(sp);
-                    return sp;
-                });
-                let ac = 0;
-                const iv2 = setInterval(() => {
-                    if (ac >= allChars.length) { clearInterval(iv2); resolve(); return; }
-                    const { c, sIdx } = allChars[ac];
-                    spanEls[sIdx].innerText += c;
-                    ac++;
-                }, 28);
-            }
+            const spans = [];
+            tmp.querySelectorAll('span').forEach(s => spans.push({ cls: s.className, text: s.textContent }));
+            el.innerHTML = '';
+            const allChars = [];
+            spans.forEach((s, idx) => [...s.text].forEach(c => allChars.push({ c, sIdx: idx })));
+            const spanEls = spans.map(s => {
+                const sp = document.createElement('span');
+                sp.className = s.cls;
+                el.appendChild(sp);
+                return sp;
+            });
+            let ac = 0;
+            const iv = setInterval(() => {
+                if (ac >= allChars.length) { clearInterval(iv); resolve(); return; }
+                const { c, sIdx } = allChars[ac];
+                spanEls[sIdx].textContent += c;
+                ac++;
+            }, 28);
         });
     }
 
