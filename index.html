@@ -525,4 +525,16 @@
     async function run() {
         for (var i = 0; i < lines.length; i++) {
             await renderLine(lines[i]);
-            awa
+            await delay(lines[i].type === 'blank' ? 80 : 120);
+            body.scrollTop = body.scrollHeight;
+        }
+        await delay(4000);
+        body.innerHTML = '';
+        run();
+    }
+
+    run();
+})();
+</script>
+</body>
+</html>
