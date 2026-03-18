@@ -105,11 +105,11 @@
         }
 
         .mega-inner {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 1.8rem 2rem;
             display: grid;
-            grid-template-columns: repeat(8, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
         }
 
@@ -127,7 +127,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.7rem;
-            padding: 1.1rem;
+            padding: 1.3rem;
             text-decoration: none;
             color: var(--text);
             border: 1px solid var(--border);
@@ -177,12 +177,12 @@
         }
 
         .dd-icon {
-            width: 36px; height: 36px;
-            border-radius: 9px;
+            width: 46px; height: 46px;
+            border-radius: 11px;
             background: white;
             border: 1px solid var(--border);
             display: flex; align-items: center; justify-content: center;
-            font-size: 1rem;
+            font-size: 1.3rem;
         }
 
         .dd-arrow {
@@ -194,14 +194,14 @@
 
         .dd-name {
             font-weight: 700;
-            font-size: 0.88rem;
+            font-size: 1rem;
             transition: color 0.12s;
         }
 
         .dd-desc {
-            font-size: 0.76rem;
+            font-size: 0.82rem;
             color: var(--muted);
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
         .dd-tag {
@@ -549,7 +549,10 @@
             transition: opacity 0.25s;
         }
 
-        .product-card.featured::after { opacity: 1; }
+        .product-card.featured::after {
+            background: linear-gradient(90deg, #60a5fa, #ffffff);
+            opacity: 1;
+        }
 
         .product-card.pink-card::after {
             background: linear-gradient(90deg, var(--pink), #f9a8d4);
@@ -1117,7 +1120,7 @@
                 <div class="f-col">
                     <h4>Contact</h4>
                     <p>GitHub: AOAO Studio</p>
-                    <p>aoao@aoao.studio</p>
+                    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f6e606e604f6e606e60217c7b7a6b6660">[email&#160;protected]</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1127,7 +1130,7 @@
         </div>
     </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const lines = [
         { type: 'prompt', text: 'python aoao_studio.py' },
         { type: 'comment', text: '# AOAO Studio v2.1 initializing...' },
@@ -1269,16 +1272,4 @@
     async function run() {
         for (const line of lines) {
             await renderLine(line);
-            await new Promise(r => setTimeout(r, line.type === 'blank' ? 80 : 120));
-            body.scrollTop = body.scrollHeight;
-        }
-        setTimeout(() => {
-            body.innerHTML = '';
-            run();
-        }, 4000);
-    }
-
-    run();
-</script>
-</body>
-</html>
+            await new Promise(r => setTimeout(r, line.typ
