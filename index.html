@@ -22,386 +22,89 @@
         }
 
         html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); background: var(--bg); overflow-x: hidden; }
 
         /* ── HEADER ── */
-        header {
-            position: fixed;
-            top: 0; width: 100%;
-            background: rgba(255,255,255,0.88);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 100;
-        }
+        header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 100; }
 
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
 
-        .logo {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--blue);
-            letter-spacing: -0.03em;
-        }
+        .logo { font-size: 1.1rem; font-weight: 800; color: var(--blue); letter-spacing: -0.03em; }
 
         .services-nav { position: static; }
 
-        .services-trigger {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-size: 0.88rem;
-            font-weight: 500;
-            color: var(--muted);
-            cursor: pointer;
-            padding: 0.4rem 0;
-            background: none;
-            border: none;
-            font-family: inherit;
-            transition: color 0.2s;
-        }
-
+        .services-trigger { display: flex; align-items: center; gap: 0.35rem; font-size: 0.88rem; font-weight: 500; color: var(--muted); cursor: pointer; padding: 0.4rem 0; background: none; border: none; font-family: inherit; transition: color 0.2s; }
         .services-nav:hover .services-trigger { color: var(--blue); }
 
-        .chevron {
-            font-size: 0.55rem;
-            transition: transform 0.2s;
-            margin-top: 1px;
-        }
+        .chevron { font-size: 0.55rem; transition: transform 0.2s; margin-top: 1px; }
         .services-nav:hover .chevron { transform: rotate(180deg); }
 
-        .dropdown {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            width: 100%;
-            background: white;
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: all 0.2s ease;
-            z-index: 99;
-        }
+        .dropdown { position: fixed; top: 64px; left: 0; width: 100%; background: white; border-bottom: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s ease; z-index: 99; }
+        .services-nav:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 
-        .services-nav:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+        .mega-inner { max-width: 1100px; margin: 0 auto; padding: 1.8rem 2rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 
-        .mega-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1.8rem 2rem;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-        }
+        .mega-label { grid-column: 1 / -1; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.3rem; }
 
-        .mega-label {
-            grid-column: 1 / -1;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #94a3b8;
-            margin-bottom: 0.3rem;
-        }
-
-        .dd-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.7rem;
-            padding: 1.3rem;
-            text-decoration: none;
-            color: var(--text);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: all 0.15s;
-            background: var(--subtle);
-        }
-
-        .dd-item:hover {
-            background: var(--blue-light);
-            border-color: rgba(37,99,235,0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37,99,235,0.1);
-        }
-
-        .dd-item.pink:hover {
-            background: var(--pink-light);
-            border-color: rgba(236,72,153,0.25);
-            box-shadow: 0 6px 20px rgba(236,72,153,0.1);
-        }
-
-        .dd-item.purple:hover {
-            background: #faf5ff;
-            border-color: rgba(139,92,246,0.25);
-            box-shadow: 0 6px 20px rgba(139,92,246,0.1);
-        }
-
-        .dd-item.green-item:hover {
-            background: #f0fdf4;
-            border-color: rgba(34,197,94,0.25);
-            box-shadow: 0 6px 20px rgba(34,197,94,0.1);
-        }
+        .dd-item { display: flex; flex-direction: column; gap: 0.7rem; padding: 1.3rem; text-decoration: none; color: var(--text); border: 1px solid var(--border); border-radius: 12px; transition: all 0.15s; background: var(--subtle); }
+        .dd-item:hover { background: var(--blue-light); border-color: rgba(37,99,235,0.25); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.1); }
+        .dd-item.pink:hover { background: var(--pink-light); border-color: rgba(236,72,153,0.25); box-shadow: 0 6px 20px rgba(236,72,153,0.1); }
+        .dd-item.purple:hover { background: #faf5ff; border-color: rgba(139,92,246,0.25); box-shadow: 0 6px 20px rgba(139,92,246,0.1); }
+        .dd-item.green-item:hover { background: #f0fdf4; border-color: rgba(34,197,94,0.25); box-shadow: 0 6px 20px rgba(34,197,94,0.1); }
 
         .dd-item:hover .dd-name { color: var(--blue); }
         .dd-item.pink:hover .dd-name { color: var(--pink); }
         .dd-item.purple:hover .dd-name { color: #7c3aed; }
         .dd-item.green-item:hover .dd-name { color: #16a34a; }
-        .dd-item:hover .dd-arrow { opacity: 1; transform: translateX(3px); }
-        .dd-item.pink:hover .dd-arrow { color: var(--pink); opacity: 1; transform: translateX(3px); }
-        .dd-item.purple:hover .dd-arrow { color: #7c3aed; opacity: 1; transform: translateX(3px); }
-        .dd-item.green-item:hover .dd-arrow { color: #16a34a; opacity: 1; transform: translateX(3px); }
+        .dd-item:hover .dd-arrow, .dd-item.pink:hover .dd-arrow, .dd-item.purple:hover .dd-arrow, .dd-item.green-item:hover .dd-arrow { opacity: 1; transform: translateX(3px); }
+        .dd-item.pink:hover .dd-arrow { color: var(--pink); }
+        .dd-item.purple:hover .dd-arrow { color: #7c3aed; }
+        .dd-item.green-item:hover .dd-arrow { color: #16a34a; }
 
-        .dd-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        .dd-top { display: flex; align-items: center; justify-content: space-between; }
+        .dd-icon { width: 46px; height: 46px; border-radius: 11px; background: white; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+        .dd-arrow { font-size: 0.8rem; color: var(--blue); opacity: 0; transition: all 0.15s; }
+        .dd-name { font-weight: 700; font-size: 1rem; transition: color 0.12s; }
+        .dd-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
 
-        .dd-icon {
-            width: 46px; height: 46px;
-            border-radius: 11px;
-            background: white;
-            border: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem;
-        }
-
-        .dd-arrow {
-            font-size: 0.8rem;
-            color: var(--blue);
-            opacity: 0;
-            transition: all 0.15s;
-        }
-
-        .dd-name {
-            font-weight: 700;
-            font-size: 1rem;
-            transition: color 0.12s;
-        }
-
-        .dd-desc {
-            font-size: 0.82rem;
-            color: var(--muted);
-            line-height: 1.55;
-        }
-
-        .dd-tag {
-            display: inline-block;
-            font-size: 0.63rem;
-            font-weight: 700;
-            padding: 0.12rem 0.45rem;
-            border-radius: 100px;
-            background: rgba(37,99,235,0.1);
-            color: var(--blue);
-            letter-spacing: 0.04em;
-        }
-
-        .dd-tag.green {
-            background: rgba(34,197,94,0.1);
-            color: #16a34a;
-        }
-
-        .dd-tag.pink {
-            background: rgba(236,72,153,0.12);
-            color: var(--pink);
-        }
-
-        .dd-tag.purple {
-            background: rgba(139,92,246,0.12);
-            color: #7c3aed;
-        }
-
-        .dd-tag.teal {
-            background: rgba(20,184,166,0.12);
-            color: #0d9488;
-        }
+        .dd-tag { display: inline-block; font-size: 0.63rem; font-weight: 700; padding: 0.12rem 0.45rem; border-radius: 100px; background: rgba(37,99,235,0.1); color: var(--blue); letter-spacing: 0.04em; }
+        .dd-tag.green { background: rgba(34,197,94,0.1); color: #16a34a; }
+        .dd-tag.pink { background: rgba(236,72,153,0.12); color: var(--pink); }
+        .dd-tag.purple { background: rgba(139,92,246,0.12); color: #7c3aed; }
+        .dd-tag.teal { background: rgba(20,184,166,0.12); color: #0d9488; }
 
         /* ── HERO ── */
-        .hero {
-            padding-top: 64px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse 80% 60% at 65% 35%, rgba(37,99,235,0.08) 0%, transparent 65%),
-                radial-gradient(ellipse 40% 40% at 10% 80%, rgba(37,99,235,0.05) 0%, transparent 60%);
-        }
-
-        .hero-grid {
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(37,99,235,0.045) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(37,99,235,0.045) 1px, transparent 1px);
-            background-size: 56px 56px;
-            mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 0%, transparent 100%);
-        }
-
-        .hero-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
-            width: 100%;
-        }
-
+        .hero { padding-top: 64px; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 65% 35%, rgba(37,99,235,0.08) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(37,99,235,0.05) 0%, transparent 60%); }
+        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.045) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 0%, transparent 100%); }
+        .hero-inner { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; position: relative; display: flex; align-items: center; justify-content: space-between; gap: 4rem; width: 100%; }
         .hero-left { max-width: 560px; }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: var(--blue-light);
-            border: 1px solid rgba(37,99,235,0.2);
-            color: var(--blue);
-            font-size: 0.76rem;
-            font-weight: 600;
-            padding: 0.28rem 0.75rem;
-            border-radius: 100px;
-            margin-bottom: 1.8rem;
-        }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--blue-light); border: 1px solid rgba(37,99,235,0.2); color: var(--blue); font-size: 0.76rem; font-weight: 600; padding: 0.28rem 0.75rem; border-radius: 100px; margin-bottom: 1.8rem; }
+        .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        .pulse {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: var(--blue);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .hero h1 {
-            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-            font-weight: 900;
-            letter-spacing: -0.045em;
-            line-height: 1.07;
-            color: var(--text);
-            margin-bottom: 1.4rem;
-        }
-
+        .hero h1 { font-size: clamp(2.6rem, 5.5vw, 4.2rem); font-weight: 900; letter-spacing: -0.045em; line-height: 1.07; color: var(--text); margin-bottom: 1.4rem; }
         .hero h1 .accent { color: var(--blue); }
-
-        .hero-desc {
-            font-size: 1.05rem;
-            color: var(--muted);
-            line-height: 1.75;
-            margin-bottom: 2.2rem;
-        }
-
+        .hero-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.75; margin-bottom: 2.2rem; }
         .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 
-        .btn-primary {
-            padding: 0.72rem 1.6rem;
-            background: var(--blue);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.92rem;
-            transition: all 0.2s;
-            border: 2px solid var(--blue);
-        }
-
-        .btn-primary:hover {
-            background: var(--blue-dark);
-            border-color: var(--blue-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(37,99,235,0.3);
-        }
-
-        .btn-ghost {
-            padding: 0.72rem 1.6rem;
-            background: transparent;
-            color: var(--text);
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.92rem;
-            transition: all 0.2s;
-            border: 2px solid var(--border);
-        }
-
-        .btn-ghost:hover {
-            border-color: var(--blue);
-            color: var(--blue);
-        }
+        .btn-primary { padding: 0.72rem 1.6rem; background: var(--blue); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.92rem; transition: all 0.2s; border: 2px solid var(--blue); }
+        .btn-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.3); }
+        .btn-ghost { padding: 0.72rem 1.6rem; background: transparent; color: var(--text); text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 0.92rem; transition: all 0.2s; border: 2px solid var(--border); }
+        .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
 
         /* terminal */
-        .hero-right {
-            flex-shrink: 0;
-            width: 420px;
-        }
-
-        .terminal {
-            background: #0d1117;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06);
-        }
-
-        .terminal-bar {
-            background: #161b22;
-            padding: 0.75rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: 1px solid #21262d;
-        }
-
+        .hero-right { flex-shrink: 0; width: 420px; }
+        .terminal { background: #0d1117; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06); }
+        .terminal-bar { background: #161b22; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #21262d; }
         .t-dot { width: 12px; height: 12px; border-radius: 50%; }
         .t-dot.r { background: #ff5f57; }
         .t-dot.y { background: #ffbd2e; }
         .t-dot.g { background: #28c840; }
-
-        .t-title {
-            margin-left: 0.5rem;
-            font-size: 0.75rem;
-            color: #484f58;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-        }
-
-        .terminal-body {
-            padding: 1.3rem 1.5rem;
-            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-            font-size: 0.8rem;
-            line-height: 1.8;
-            min-height: 260px;
-        }
-
-        .t-line { display: flex; gap: 0.5rem; opacity: 0; align-items: center; }
-        .t-line.visible { opacity: 1; }
-
+        .t-title { margin-left: 0.5rem; font-size: 0.75rem; color: #484f58; font-family: 'SF Mono', 'Fira Code', monospace; }
+        .terminal-body { padding: 1.3rem 1.5rem; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; font-size: 0.8rem; line-height: 1.8; min-height: 260px; }
+        .t-line { display: flex; gap: 0.5rem; align-items: center; }
         .t-prompt { color: #4d9fff; user-select: none; }
         .t-cmd { color: #ffffff; }
         .t-comment { color: #adbac7; }
@@ -414,492 +117,153 @@
         .t-pink { color: #ff85c8; }
         .t-purple { color: #ce93f8; }
         .t-teal { color: #5eead4; }
-
-        .cursor {
-            display: inline-block;
-            width: 2px; height: 0.9em;
-            background: #2563eb;
-            margin-left: 1px;
-            vertical-align: middle;
-            animation: blink 1s steps(1) infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+        .cursor { display: inline-block; width: 2px; height: 0.9em; background: #2563eb; margin-left: 1px; vertical-align: middle; animation: blink 1s steps(1) infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         /* ── STATS ── */
-        .stats-bar {
-            background: var(--text);
-            padding: 2.5rem 2rem;
-        }
-
-        .stats-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-around;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
+        .stats-bar { background: var(--text); padding: 2.5rem 2rem; }
+        .stats-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-around; gap: 2rem; flex-wrap: wrap; }
         .stat { text-align: center; }
-
-        .stat-num {
-            font-size: 2.1rem;
-            font-weight: 900;
-            color: white;
-            letter-spacing: -0.04em;
-        }
-
+        .stat-num { font-size: 2.1rem; font-weight: 900; color: white; letter-spacing: -0.04em; }
         .stat-num .u { color: var(--blue); }
-
-        .stat-lbl {
-            font-size: 0.75rem;
-            color: #475569;
-            font-weight: 600;
-            margin-top: 0.2rem;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-        }
+        .stat-lbl { font-size: 0.75rem; color: #475569; font-weight: 600; margin-top: 0.2rem; letter-spacing: 0.07em; text-transform: uppercase; }
 
         /* ── PRODUCTS ── */
-        .products {
-            padding: 7rem 2rem;
-            background: var(--subtle);
-        }
+        .products { padding: 7rem 2rem; background: var(--subtle); }
+        .s-label { text-align: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.7rem; }
+        .s-title { text-align: center; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.035em; color: var(--text); margin-bottom: 0.9rem; }
+        .s-desc { text-align: center; color: var(--muted); font-size: 0.97rem; max-width: 460px; margin: 0 auto 3.5rem; line-height: 1.7; }
 
-        .s-label {
-            text-align: center;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--blue);
-            margin-bottom: 0.7rem;
-        }
+        .product-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.3rem; }
 
-        .s-title {
-            text-align: center;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 800;
-            letter-spacing: -0.035em;
-            color: var(--text);
-            margin-bottom: 0.9rem;
-        }
+        .product-row1 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+        .product-row2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.3rem; }
 
-        .s-desc {
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.97rem;
-            max-width: 460px;
-            margin: 0 auto 3.5rem;
-            line-height: 1.7;
-        }
+        .product-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; transition: all 0.25s; position: relative; overflow: hidden; }
 
-        /* ── 변경: 카드 레이아웃 ── */
-        /* 1행: 대표 카드 1개 (featured) + 일반 2개 = 3열 */
-        /* 2행: 일반 카드 3개 + 코평 = 4열 */
-        .product-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 1.3rem;
-        }
+        .product-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), #60a5fa); opacity: 0; transition: opacity 0.25s; }
+        .product-card.pink-card::after { background: linear-gradient(90deg, var(--pink), #f9a8d4); }
+        .product-card.purple-card::after { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+        .product-card.teal-card::after { background: linear-gradient(90deg, #0d9488, #5eead4); }
 
-        /* 코평은 2행에서 나머지 카드들과 함께 4열로 */
-        .product-grid .row2 {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.3rem;
-        }
+        /* featured - 다른 카드랑 동일하게 */
+        .product-card.featured { background: white; border-color: var(--border); }
+        .product-card.featured::after { background: linear-gradient(90deg, var(--blue), #60a5fa); opacity: 0; }
+        .product-card.featured:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.09); border-color: rgba(37,99,235,0.2); }
+        .product-card.featured:hover::after { opacity: 1; }
 
-        .product-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.8rem;
-            transition: all 0.25s;
-            position: relative;
-            overflow: hidden;
-        }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.09); border-color: rgba(37,99,235,0.2); }
+        .product-card:hover::after { opacity: 1; }
+        .product-card.pink-card:hover { border-color: rgba(236,72,153,0.2); box-shadow: 0 12px 40px rgba(236,72,153,0.08); }
+        .product-card.purple-card:hover { border-color: rgba(124,58,237,0.2); box-shadow: 0 12px 40px rgba(124,58,237,0.08); }
+        .product-card.teal-card:hover { border-color: rgba(13,148,136,0.2); box-shadow: 0 12px 40px rgba(13,148,136,0.08); }
 
-        /* featured 카드 (OLG AI Studio) */
-        .product-card.featured {
-            background: var(--text);
-            border-color: var(--text);
-            color: white;
-        }
-        .product-card.featured h3 { color: white; }
-        .product-card.featured p { color: #94a3b8; }
-        .product-card.featured .p-icon { background: rgba(255,255,255,0.1); }
-        .product-card.featured .p-link { color: #60a5fa; }
-        .product-card.featured:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
-
-        .product-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--blue), #60a5fa);
-            opacity: 0;
-            transition: opacity 0.25s;
-        }
-
-        .product-card.featured::after {
-            background: linear-gradient(90deg, #60a5fa, #ffffff);
-            opacity: 1;
-        }
-
-        .product-card.pink-card::after {
-            background: linear-gradient(90deg, var(--pink), #f9a8d4);
-        }
-
-        .product-card.purple-card::after {
-            background: linear-gradient(90deg, #7c3aed, #a78bfa);
-        }
-
-        .product-card.teal-card::after {
-            background: linear-gradient(90deg, #0d9488, #5eead4);
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.09);
-            border-color: rgba(37,99,235,0.2);
-        }
-
-        .product-card.pink-card:hover {
-            border-color: rgba(236,72,153,0.2);
-            box-shadow: 0 12px 40px rgba(236,72,153,0.08);
-        }
-
-        .product-card.purple-card:hover {
-            border-color: rgba(124,58,237,0.2);
-            box-shadow: 0 12px 40px rgba(124,58,237,0.08);
-        }
-
-        .product-card.teal-card:hover {
-            border-color: rgba(13,148,136,0.2);
-            box-shadow: 0 12px 40px rgba(13,148,136,0.08);
-        }
-
-        .product-card:not(.featured):hover::after { opacity: 1; }
-
-        .p-icon {
-            width: 46px; height: 46px;
-            border-radius: 11px;
-            background: var(--blue-light);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
-        }
-
+        .p-icon { width: 46px; height: 46px; border-radius: 11px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.2rem; }
         .p-icon.pink { background: var(--pink-light); }
         .p-icon.purple { background: #f5f3ff; }
         .p-icon.teal { background: #f0fdfa; }
 
-        .product-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.55rem;
-            letter-spacing: -0.02em;
-        }
+        .product-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.55rem; letter-spacing: -0.02em; }
+        .product-card p { color: var(--muted); font-size: 0.87rem; line-height: 1.65; margin-bottom: 1.4rem; }
 
-        .product-card p {
-            color: var(--muted);
-            font-size: 0.87rem;
-            line-height: 1.65;
-            margin-bottom: 1.4rem;
-        }
-
-        .p-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            color: var(--blue);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: gap 0.2s;
-        }
-
+        .p-link { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: gap 0.2s; }
         .p-link.pink { color: var(--pink); }
         .p-link.purple { color: #7c3aed; }
         .p-link.teal { color: #0d9488; }
         .p-link:hover { gap: 0.55rem; }
 
-        .new-badge {
-            display: inline-block;
-            font-size: 0.6rem;
-            font-weight: 800;
-            padding: 0.1rem 0.4rem;
-            border-radius: 100px;
-            background: linear-gradient(135deg, var(--pink), #f97316);
-            color: white;
-            letter-spacing: 0.05em;
-            vertical-align: middle;
-            margin-left: 0.4rem;
-            text-transform: uppercase;
-        }
+        .new-badge { display: inline-block; font-size: 0.6rem; font-weight: 800; padding: 0.1rem 0.4rem; border-radius: 100px; background: linear-gradient(135deg, var(--pink), #f97316); color: white; letter-spacing: 0.05em; vertical-align: middle; margin-left: 0.4rem; text-transform: uppercase; }
 
         /* ── ABOUT ── */
         .about { padding: 7rem 2rem; }
-
-        .about-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
+        .about-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
         .about-text .s-label { text-align: left; }
         .about-text .s-title { text-align: left; margin-bottom: 1.3rem; font-size: clamp(1.8rem, 3vw, 2.4rem); }
-
-        .about-text p {
-            color: var(--muted);
-            font-size: 0.93rem;
-            line-height: 1.8;
-            margin-bottom: 0.9rem;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .a-stat {
-            background: var(--subtle);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.4rem 1rem;
-            text-align: center;
-        }
-
-        .a-stat .n {
-            font-size: 1.9rem;
-            font-weight: 900;
-            color: var(--blue);
-            letter-spacing: -0.03em;
-        }
-
-        .a-stat .l {
-            font-size: 0.72rem;
-            color: var(--muted);
-            font-weight: 600;
-            margin-top: 0.25rem;
-        }
+        .about-text p { color: var(--muted); font-size: 0.93rem; line-height: 1.8; margin-bottom: 0.9rem; }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+        .a-stat { background: var(--subtle); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1rem; text-align: center; }
+        .a-stat .n { font-size: 1.9rem; font-weight: 900; color: var(--blue); letter-spacing: -0.03em; }
+        .a-stat .l { font-size: 0.72rem; color: var(--muted); font-weight: 600; margin-top: 0.25rem; }
 
         /* ── TECH ── */
-        .technology {
-            padding: 7rem 2rem;
-            background: var(--subtle);
-        }
-
-        .tech-grid {
-            max-width: 880px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-
-        .tech-item {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.3rem 1rem;
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-        .tech-item:hover {
-            border-color: rgba(37,99,235,0.3);
-            box-shadow: 0 4px 20px rgba(37,99,235,0.08);
-        }
-
+        .technology { padding: 7rem 2rem; background: var(--subtle); }
+        .tech-grid { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .tech-item { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem 1rem; text-align: center; transition: all 0.2s; }
+        .tech-item:hover { border-color: rgba(37,99,235,0.3); box-shadow: 0 4px 20px rgba(37,99,235,0.08); }
         .tech-emoji { font-size: 1.5rem; margin-bottom: 0.5rem; }
-
-        .tech-item h4 {
-            font-size: 0.84rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .tech-item p {
-            color: var(--muted);
-            font-size: 0.76rem;
-        }
+        .tech-item h4 { font-size: 0.84rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .tech-item p { color: var(--muted); font-size: 0.76rem; }
 
         /* ── FOOTER ── */
-        footer {
-            background: var(--text);
-            padding: 4rem 2rem 2rem;
-        }
-
+        footer { background: var(--text); padding: 4rem 2rem 2rem; }
         .footer-inner { max-width: 1200px; margin: 0 auto; }
-
-        .footer-top {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid #1e293b;
-        }
-
-        .f-brand-name {
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: white;
-            letter-spacing: -0.03em;
-            margin-bottom: 0.7rem;
-        }
-
-        .f-brand p {
-            color: #475569;
-            font-size: 0.84rem;
-            line-height: 1.7;
-        }
-
-        .f-col h4 {
-            color: #64748b;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .f-col a, .f-col p {
-            display: block;
-            color: #475569;
-            text-decoration: none;
-            font-size: 0.84rem;
-            margin-bottom: 0.55rem;
-            transition: color 0.2s;
-        }
-
+        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #1e293b; }
+        .f-brand-name { font-size: 1.05rem; font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.7rem; }
+        .f-brand p { color: #475569; font-size: 0.84rem; line-height: 1.7; }
+        .f-col h4 { color: #64748b; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+        .f-col a, .f-col p { display: block; color: #475569; text-decoration: none; font-size: 0.84rem; margin-bottom: 0.55rem; transition: color 0.2s; }
         .f-col a:hover { color: white; }
+        .footer-bottom { padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { color: #334155; font-size: 0.8rem; }
 
-        .footer-bottom {
-            padding-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-bottom p {
-            color: #334155;
-            font-size: 0.8rem;
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            .hero-right { display: none; }
-            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .mega-inner { grid-template-columns: repeat(4, 1fr); }
-            .product-grid { grid-template-columns: 1fr 1fr; }
-            .product-grid .row2 { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            .tech-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
-            .footer-bottom { flex-direction: column; gap: 0.4rem; text-align: center; }
-            .about-stats { grid-template-columns: 1fr; }
-            .mega-inner { grid-template-columns: repeat(2, 1fr); }
-            .product-grid { grid-template-columns: 1fr; }
-            .product-grid .row2 { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 1024px) { .hero-right { display: none; } .about-grid { grid-template-columns: 1fr; gap: 3rem; } .mega-inner { grid-template-columns: repeat(2, 1fr); } .product-row1 { grid-template-columns: 1fr 1fr; } .product-row2 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .tech-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; } .footer-bottom { flex-direction: column; gap: 0.4rem; text-align: center; } .about-stats { grid-template-columns: 1fr; } .product-row1 { grid-template-columns: 1fr; } .product-row2 { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
     <header>
         <nav>
             <div class="logo">AOAO Studio</div>
             <div class="services-nav">
-                <button class="services-trigger">
-                    운영 서비스 <span class="chevron">▼</span>
-                </button>
+                <button class="services-trigger">운영 서비스 <span class="chevron">▼</span></button>
                 <div class="dropdown">
                     <div class="mega-inner">
                         <div class="mega-label">운영 중인 서비스</div>
                         <a href="https://aoao-studio-code.onrender.com/home" class="dd-item" target="_blank">
-                            <div class="dd-top">
-                                <div class="dd-icon">🤖</div>
-                                <span class="dd-arrow">→</span>
-                            </div>
+                            <div class="dd-top"><div class="dd-icon">🤖</div><span class="dd-arrow">→</span></div>
                             <div class="dd-name">OLG AI Studio</div>
                             <div class="dd-desc">다양한 AI 기능을 하나의 플랫폼에서 사용할 수 있는 통합 웹 앱</div>
                             <span class="dd-tag">AI · 플랫폼</span>
                         </a>
                         <a href="https://aoao-gmae-studio.onrender.com/" class="dd-item" target="_blank">
-                            <div class="dd-top">
-                                <div class="dd-icon">🎮</div>
-                                <span class="dd-arrow">→</span>
-                            </div>
+                            <div class="dd-top"><div class="dd-icon">🎮</div><span class="dd-arrow">→</span></div>
                             <div class="dd-name">Game Studio</div>
                             <div class="dd-desc">브라우저에서 바로 플레이할 수 있는 웹 기반 게임 플랫폼</div>
                             <span class="dd-tag">게임 · 웹</span>
                         </a>
                         <a href="https://aoao-studio-data.onrender.com/" class="dd-item" target="_blank">
-                            <div class="dd-top">
-                                <div class="dd-icon">🗄️</div>
-                                <span class="dd-arrow">→</span>
-                            </div>
+                            <div class="dd-top"><div class="dd-icon">🗄️</div><span class="dd-arrow">→</span></div>
                             <div class="dd-name">AOAO Data</div>
                             <div class="dd-desc">팀의 데이터를 효율적으로 저장하고 관리하는 데이터 서비스</div>
                             <span class="dd-tag">데이터 · 관리</span>
                         </a>
                         <a href="https://aoao-studio-typo.onrender.com/" class="dd-item" target="_blank">
-                            <div class="dd-top">
-                                <div class="dd-icon">✍️</div>
-                                <span class="dd-arrow">→</span>
-                            </div>
+                            <div class="dd-top"><div class="dd-icon">✍️</div><span class="dd-arrow">→</span></div>
                             <div class="dd-name">AOAO Type Studio</div>
                             <div class="dd-desc">애니메이션 타이포그래피를 전문적으로 제작할 수 있는 크리에이티브 툴</div>
                             <span class="dd-tag">타이포 · 애니메이션</span>
                         </a>
                         <a href="https://aoao-studio-zeta.onrender.com/" class="dd-item pink" target="_blank">
-                            <div class="dd-top">
-                                <div class="dd-icon">💕</div>
-                                <span class="dd-arrow">→</span>
-                            </div>
+                            <div class="dd-top"><div class="dd-icon">💕</div><span class="dd-arrow">→</span></div>
                             <div class="dd-name">AI Girlfriend</div>
                             <div class="dd-desc">AI와 여친처럼 자연스럽게 대화할 수 있는 감성 채팅 서비스</div>
                             <span class="dd-tag pink">💬 감성 · 대화</span>
                         </a>
                         <a href="https://aoao-studio-state.onrender.com/" class="dd-item" target="_blank">
-                            <div class="dd-top">
-                                <div class="dd-icon">📡</div>
-                                <span class="dd-arrow">→</span>
-                            </div>
+                            <div class="dd-top"><div class="dd-icon">📡</div><span class="dd-arrow">→</span></div>
                             <div class="dd-name">서버 상태 확인</div>
                             <div class="dd-desc">AOAO Studio 전체 서비스의 실시간 서버 상태를 모니터링</div>
                             <span class="dd-tag green">🟢 실시간 모니터링</span>
                         </a>
                         <a href="https://aoao-studio-auth.onrender.com/" class="dd-item purple" target="_blank">
-                            <div class="dd-top">
-                                <div class="dd-icon">🔐</div>
-                                <span class="dd-arrow">→</span>
-                            </div>
+                            <div class="dd-top"><div class="dd-icon">🔐</div><span class="dd-arrow">→</span></div>
                             <div class="dd-name">계정 관리</div>
                             <div class="dd-desc">AOAO Studio 통합 계정을 관리하고 설정할 수 있는 인증 서비스</div>
                             <span class="dd-tag purple">🔑 계정 · 인증</span>
                         </a>
                         <a href="https://aoao-copung-studio.onrender.com" class="dd-item green-item" target="_blank">
-                            <div class="dd-top">
-                                <div class="dd-icon">🏗️</div>
-                                <span class="dd-arrow">→</span>
-                            </div>
+                            <div class="dd-top"><div class="dd-icon">🏗️</div><span class="dd-arrow">→</span></div>
                             <div class="dd-name">코평</div>
                             <div class="dd-desc">AOAO Studio 자회사. 대형 프로젝트 전문 개발 스튜디오</div>
                             <span class="dd-tag teal">🏢 대형 프로젝트</span>
@@ -910,24 +274,14 @@
         </nav>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-grid"></div>
         <div class="hero-inner">
             <div class="hero-left">
-                <div class="hero-badge">
-                    <span class="pulse"></span> 6개 서비스 운영 중
-                </div>
-                <h1>
-                    Building<br>
-                    <span class="accent">Better</span><br>
-                    Technology
-                </h1>
-                <p class="hero-desc">
-                    젊은 개발자들이 만드는 실용적인 소프트웨어.<br>
-                    사람들이 실제로 필요로 하는 도구를 만듭니다.
-                </p>
+                <div class="hero-badge"><span class="pulse"></span> 6개 서비스 운영 중</div>
+                <h1>Building<br><span class="accent">Better</span><br>Technology</h1>
+                <p class="hero-desc">젊은 개발자들이 만드는 실용적인 소프트웨어.<br>사람들이 실제로 필요로 하는 도구를 만듭니다.</p>
                 <div class="hero-actions">
                     <a href="https://aoao-studio-code.onrender.com/home" class="btn-primary" target="_blank">서비스 시작하기</a>
                     <a href="#about" class="btn-ghost">팀 소개</a>
@@ -936,9 +290,7 @@
             <div class="hero-right">
                 <div class="terminal">
                     <div class="terminal-bar">
-                        <div class="t-dot r"></div>
-                        <div class="t-dot y"></div>
-                        <div class="t-dot g"></div>
+                        <div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div>
                         <span class="t-title">aoao_studio.py</span>
                     </div>
                     <div class="terminal-body" id="terminalBody"></div>
@@ -947,57 +299,41 @@
         </div>
     </section>
 
-    <!-- STATS -->
     <div class="stats-bar">
         <div class="stats-inner">
-            <div class="stat">
-                <div class="stat-num">2<span class="u">명</span></div>
-                <div class="stat-lbl">Team Members</div>
-            </div>
-            <div class="stat">
-                <div class="stat-num">6<span class="u">+</span></div>
-                <div class="stat-lbl">Products</div>
-            </div>
-            <div class="stat">
-                <div class="stat-num">24<span class="u">/7</span></div>
-                <div class="stat-lbl">Uptime</div>
-            </div>
-            <div class="stat">
-                <div class="stat-num">100<span class="u">%</span></div>
-                <div class="stat-lbl">Made in Korea</div>
-            </div>
+            <div class="stat"><div class="stat-num">2<span class="u">명</span></div><div class="stat-lbl">Team Members</div></div>
+            <div class="stat"><div class="stat-num">6<span class="u">+</span></div><div class="stat-lbl">Products</div></div>
+            <div class="stat"><div class="stat-num">24<span class="u">/7</span></div><div class="stat-lbl">Uptime</div></div>
+            <div class="stat"><div class="stat-num">100<span class="u">%</span></div><div class="stat-lbl">Made in Korea</div></div>
         </div>
     </div>
 
-    <!-- PRODUCTS -->
     <section class="products">
         <div class="s-label">Our Products</div>
         <h2 class="s-title">만들고 있는 것들</h2>
         <p class="s-desc">실제로 작동하는 제품을, 직관적인 경험으로 빠르게 제공합니다.</p>
-
         <div class="product-grid">
-            <!-- Row 1: Featured + 2 cards -->
-            <div class="product-card featured">
-                <div class="p-icon">🤖</div>
-                <h3>OLG AI Studio</h3>
-                <p>다양한 AI 기능을 하나의 플랫폼에서. 실무에 필요한 도구들을 통합한 웹 애플리케이션입니다.</p>
-                <a href="https://aoao-studio-code.onrender.com/home" class="p-link" target="_blank">자세히 보기 →</a>
+            <div class="product-row1">
+                <div class="product-card featured">
+                    <div class="p-icon">🤖</div>
+                    <h3>OLG AI Studio</h3>
+                    <p>다양한 AI 기능을 하나의 플랫폼에서. 실무에 필요한 도구들을 통합한 웹 애플리케이션입니다.</p>
+                    <a href="https://aoao-studio-code.onrender.com/home" class="p-link" target="_blank">자세히 보기 →</a>
+                </div>
+                <div class="product-card">
+                    <div class="p-icon">💬</div>
+                    <h3>OLG 3.1 Chat</h3>
+                    <p>대화형 인터페이스. 텍스트와 이미지를 처리하고, 자연스러운 대화로 작업을 수행합니다.</p>
+                    <a href="https://aoao-studio-code.onrender.com/chat" class="p-link" target="_blank">시작하기 →</a>
+                </div>
+                <div class="product-card pink-card">
+                    <div class="p-icon pink">💕</div>
+                    <h3>AI Girlfriend <span class="new-badge">NEW</span></h3>
+                    <p>AI와 여친처럼 대화하는 감성 채팅 서비스. 자연스럽고 따뜻한 대화 경험을 제공합니다.</p>
+                    <a href="https://aoao-studio-zeta.onrender.com/" class="p-link pink" target="_blank">대화 시작하기 →</a>
+                </div>
             </div>
-            <div class="product-card">
-                <div class="p-icon">💬</div>
-                <h3>OLG 3.1 Chat</h3>
-                <p>대화형 인터페이스. 텍스트와 이미지를 처리하고, 자연스러운 대화로 작업을 수행합니다.</p>
-                <a href="https://aoao-studio-code.onrender.com/chat" class="p-link" target="_blank">시작하기 →</a>
-            </div>
-            <div class="product-card pink-card">
-                <div class="p-icon pink">💕</div>
-                <h3>AI Girlfriend <span class="new-badge">NEW</span></h3>
-                <p>AI와 여친처럼 대화하는 감성 채팅 서비스. 자연스럽고 따뜻한 대화 경험을 제공합니다.</p>
-                <a href="https://aoao-studio-zeta.onrender.com/" class="p-link pink" target="_blank">대화 시작하기 →</a>
-            </div>
-
-            <!-- Row 2: 4 smaller cards -->
-            <div class="row2">
+            <div class="product-row2">
                 <div class="product-card">
                     <div class="p-icon">✍️</div>
                     <h3>AOAO Type Studio</h3>
@@ -1026,7 +362,6 @@
         </div>
     </section>
 
-    <!-- ABOUT -->
     <section class="about" id="about">
         <div class="about-grid">
             <div class="about-text">
@@ -1037,62 +372,27 @@
                 <p>Python, Flask, FastAPI를 기반으로 한 백엔드와 현대적인 프론트엔드 기술로 안정적인 웹 플랫폼을 구축합니다.</p>
             </div>
             <div class="about-stats">
-                <div class="a-stat">
-                    <div class="n">2</div>
-                    <div class="l">Team</div>
-                </div>
-                <div class="a-stat">
-                    <div class="n">6+</div>
-                    <div class="l">Products</div>
-                </div>
-                <div class="a-stat">
-                    <div class="n">24/7</div>
-                    <div class="l">Uptime</div>
-                </div>
+                <div class="a-stat"><div class="n">2</div><div class="l">Team</div></div>
+                <div class="a-stat"><div class="n">6+</div><div class="l">Products</div></div>
+                <div class="a-stat"><div class="n">24/7</div><div class="l">Uptime</div></div>
             </div>
         </div>
     </section>
 
-    <!-- TECH -->
     <section class="technology">
         <div class="s-label">Stack</div>
         <h2 class="s-title">기술 스택</h2>
         <p class="s-desc" style="margin-bottom:2.5rem">안정적이고 빠른 서비스를 위한 기술 선택</p>
         <div class="tech-grid">
-            <div class="tech-item">
-                <div class="tech-emoji">🐍</div>
-                <h4>Backend</h4>
-                <p>Python · Flask · FastAPI</p>
-            </div>
-            <div class="tech-item">
-                <div class="tech-emoji">🔗</div>
-                <h4>API</h4>
-                <p>RESTful · Third-party</p>
-            </div>
-            <div class="tech-item">
-                <div class="tech-emoji">🗃️</div>
-                <h4>Database</h4>
-                <p>PostgreSQL · SQLite</p>
-            </div>
-            <div class="tech-item">
-                <div class="tech-emoji">☁️</div>
-                <h4>Deployment</h4>
-                <p>Render · Cloud</p>
-            </div>
-            <div class="tech-item">
-                <div class="tech-emoji">🖥️</div>
-                <h4>Frontend</h4>
-                <p>HTML · CSS · JS</p>
-            </div>
-            <div class="tech-item">
-                <div class="tech-emoji">⚡</div>
-                <h4>Real-time</h4>
-                <p>WebSocket · Live</p>
-            </div>
+            <div class="tech-item"><div class="tech-emoji">🐍</div><h4>Backend</h4><p>Python · Flask · FastAPI</p></div>
+            <div class="tech-item"><div class="tech-emoji">🔗</div><h4>API</h4><p>RESTful · Third-party</p></div>
+            <div class="tech-item"><div class="tech-emoji">🗃️</div><h4>Database</h4><p>PostgreSQL · SQLite</p></div>
+            <div class="tech-item"><div class="tech-emoji">☁️</div><h4>Deployment</h4><p>Render · Cloud</p></div>
+            <div class="tech-item"><div class="tech-emoji">🖥️</div><h4>Frontend</h4><p>HTML · CSS · JS</p></div>
+            <div class="tech-item"><div class="tech-emoji">⚡</div><h4>Real-time</h4><p>WebSocket · Live</p></div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-inner">
             <div class="footer-top">
@@ -1120,7 +420,7 @@
                 <div class="f-col">
                     <h4>Contact</h4>
                     <p>GitHub: AOAO Studio</p>
-                    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f6e606e604f6e606e60217c7b7a6b6660">[email&#160;protected]</a></p>
+                    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c0d030d032c0d030d03421f1819080503">[email&#160;protected]</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1131,56 +431,18 @@
     </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const lines = [
+(function() {
+    var lines = [
         { type: 'prompt', text: 'python aoao_studio.py' },
         { type: 'comment', text: '# AOAO Studio v2.1 initializing...' },
-        { type: 'code', parts: [
-            { cls: 't-keyword', t: 'from' },
-            { cls: 't-cmd', t: ' aoao ' },
-            { cls: 't-keyword', t: 'import' },
-            { cls: 't-cmd', t: ' Studio, AI, Data' },
-        ]},
-        { type: 'code', parts: [
-            { cls: 't-keyword', t: 'from' },
-            { cls: 't-cmd', t: ' games ' },
-            { cls: 't-keyword', t: 'import' },
-            { cls: 't-cmd', t: ' GameEngine' },
-        ]},
-        { type: 'code', parts: [
-            { cls: 't-keyword', t: 'from' },
-            { cls: 't-cmd', t: ' zeta ' },
-            { cls: 't-keyword', t: 'import' },
-            { cls: 't-pink', t: ' AIGirlfriend' },
-        ]},
-        { type: 'code', parts: [
-            { cls: 't-keyword', t: 'from' },
-            { cls: 't-cmd', t: ' auth ' },
-            { cls: 't-keyword', t: 'import' },
-            { cls: 't-purple', t: ' AccountManager' },
-        ]},
-        { type: 'code', parts: [
-            { cls: 't-keyword', t: 'from' },
-            { cls: 't-cmd', t: ' copung ' },
-            { cls: 't-keyword', t: 'import' },
-            { cls: 't-teal', t: ' KoPyeong' },
-        ]},
+        { type: 'code', parts: [{ cls: 't-keyword', t: 'from' }, { cls: 't-cmd', t: ' aoao ' }, { cls: 't-keyword', t: 'import' }, { cls: 't-cmd', t: ' Studio, AI, Data' }] },
+        { type: 'code', parts: [{ cls: 't-keyword', t: 'from' }, { cls: 't-cmd', t: ' games ' }, { cls: 't-keyword', t: 'import' }, { cls: 't-cmd', t: ' GameEngine' }] },
+        { type: 'code', parts: [{ cls: 't-keyword', t: 'from' }, { cls: 't-cmd', t: ' zeta ' }, { cls: 't-keyword', t: 'import' }, { cls: 't-pink', t: ' AIGirlfriend' }] },
+        { type: 'code', parts: [{ cls: 't-keyword', t: 'from' }, { cls: 't-cmd', t: ' auth ' }, { cls: 't-keyword', t: 'import' }, { cls: 't-purple', t: ' AccountManager' }] },
+        { type: 'code', parts: [{ cls: 't-keyword', t: 'from' }, { cls: 't-cmd', t: ' copung ' }, { cls: 't-keyword', t: 'import' }, { cls: 't-teal', t: ' KoPyeong' }] },
         { type: 'blank' },
-        { type: 'code', parts: [
-            { cls: 't-var', t: 'studio' },
-            { cls: 't-cmd', t: ' = ' },
-            { cls: 't-func', t: 'Studio' },
-            { cls: 't-cmd', t: '(' },
-            { cls: 't-string', t: '"AOAO"' },
-            { cls: 't-cmd', t: ', team=' },
-            { cls: 't-string', t: '2' },
-            { cls: 't-cmd', t: ')' },
-        ]},
-        { type: 'code', parts: [
-            { cls: 't-var', t: 'studio' },
-            { cls: 't-cmd', t: '.' },
-            { cls: 't-func', t: 'launch' },
-            { cls: 't-cmd', t: '()' },
-        ]},
+        { type: 'code', parts: [{ cls: 't-var', t: 'studio' }, { cls: 't-cmd', t: ' = ' }, { cls: 't-func', t: 'Studio' }, { cls: 't-cmd', t: '(' }, { cls: 't-string', t: '"AOAO"' }, { cls: 't-cmd', t: ', team=' }, { cls: 't-string', t: '2' }, { cls: 't-cmd', t: ')' }] },
+        { type: 'code', parts: [{ cls: 't-var', t: 'studio' }, { cls: 't-cmd', t: '.' }, { cls: 't-func', t: 'launch' }, { cls: 't-cmd', t: '()' }] },
         { type: 'blank' },
         { type: 'out', text: '✓ OLG AI Studio    running on :8000' },
         { type: 'out', text: '✓ Game Studio      running on :8001' },
@@ -1191,85 +453,76 @@
         { type: 'teal', text: '✓ KoPyeong Studio  running on :8006 🏗️' },
         { type: 'blank' },
         { type: 'dim', text: '7 services online. Ready.' },
-        { type: 'cursor' },
+        { type: 'cursor' }
     ];
 
-    const body = document.getElementById('terminalBody');
+    var body = document.getElementById('terminalBody');
 
-    function renderLine(line) {
-        const div = document.createElement('div');
-        div.className = 't-line';
-
-        if (line.type === 'blank') {
-            div.innerHTML = '&nbsp;';
-            div.className = 't-line visible';
-            body.appendChild(div);
-            return Promise.resolve();
-        }
-
-        if (line.type === 'cursor') {
-            div.innerHTML = `<span class="t-prompt">❯</span><span class="cursor"></span>`;
-            div.className = 't-line visible';
-            body.appendChild(div);
-            return Promise.resolve();
-        }
-
-        body.appendChild(div);
-        div.classList.add('visible');
-
-        if (line.type === 'prompt') {
-            return typeLine(div, `<span class="t-prompt">❯</span> <span class="t-cmd">${line.text}</span>`);
-        }
-        if (line.type === 'comment') {
-            return typeLine(div, `<span class="t-comment">${line.text}</span>`);
-        }
-        if (line.type === 'out') {
-            return typeLine(div, `<span class="t-out">${line.text}</span>`);
-        }
-        if (line.type === 'pink') {
-            return typeLine(div, `<span class="t-pink">${line.text}</span>`);
-        }
-        if (line.type === 'purple') {
-            return typeLine(div, `<span class="t-purple">${line.text}</span>`);
-        }
-        if (line.type === 'teal') {
-            return typeLine(div, `<span class="t-teal">${line.text}</span>`);
-        }
-        if (line.type === 'dim') {
-            return typeLine(div, `<span class="t-dim">${line.text}</span>`);
-        }
-        if (line.type === 'code') {
-            const html = line.parts.map(p => `<span class="${p.cls}">${p.t}</span>`).join('');
-            return typeLine(div, html);
-        }
+    function makeSpan(cls, text) {
+        var sp = document.createElement('span');
+        sp.className = cls;
+        sp.textContent = text;
+        return sp;
     }
 
     function typeLine(el, html) {
-        return new Promise(resolve => {
-            const tmp = document.createElement('div');
+        return new Promise(function(resolve) {
+            var tmp = document.createElement('div');
             tmp.innerHTML = html;
-            const spans = [];
-            tmp.querySelectorAll('span').forEach(s => spans.push({ cls: s.className, text: s.textContent }));
+            var spans = [];
+            tmp.querySelectorAll('span').forEach(function(s) { spans.push({ cls: s.className, text: s.textContent }); });
             el.innerHTML = '';
-            const allChars = [];
-            spans.forEach((s, idx) => [...s.text].forEach(c => allChars.push({ c, sIdx: idx })));
-            const spanEls = spans.map(s => {
-                const sp = document.createElement('span');
+            var allChars = [];
+            spans.forEach(function(s, idx) { s.text.split('').forEach(function(c) { allChars.push({ c: c, sIdx: idx }); }); });
+            var spanEls = spans.map(function(s) {
+                var sp = document.createElement('span');
                 sp.className = s.cls;
                 el.appendChild(sp);
                 return sp;
             });
-            let ac = 0;
-            const iv = setInterval(() => {
+            var ac = 0;
+            var iv = setInterval(function() {
                 if (ac >= allChars.length) { clearInterval(iv); resolve(); return; }
-                const { c, sIdx } = allChars[ac];
-                spanEls[sIdx].textContent += c;
+                spanEls[allChars[ac].sIdx].textContent += allChars[ac].c;
                 ac++;
             }, 28);
         });
     }
 
+    function renderLine(line) {
+        var div = document.createElement('div');
+        div.className = 't-line';
+
+        if (line.type === 'blank') {
+            div.innerHTML = '&nbsp;';
+            body.appendChild(div);
+            return Promise.resolve();
+        }
+        if (line.type === 'cursor') {
+            div.innerHTML = '<span class="t-prompt">❯</span><span class="cursor"></span>';
+            body.appendChild(div);
+            return Promise.resolve();
+        }
+
+        body.appendChild(div);
+
+        if (line.type === 'prompt') return typeLine(div, '<span class="t-prompt">❯</span> <span class="t-cmd">' + line.text + '</span>');
+        if (line.type === 'comment') return typeLine(div, '<span class="t-comment">' + line.text + '</span>');
+        if (line.type === 'out') return typeLine(div, '<span class="t-out">' + line.text + '</span>');
+        if (line.type === 'pink') return typeLine(div, '<span class="t-pink">' + line.text + '</span>');
+        if (line.type === 'purple') return typeLine(div, '<span class="t-purple">' + line.text + '</span>');
+        if (line.type === 'teal') return typeLine(div, '<span class="t-teal">' + line.text + '</span>');
+        if (line.type === 'dim') return typeLine(div, '<span class="t-dim">' + line.text + '</span>');
+        if (line.type === 'code') {
+            var html = line.parts.map(function(p) { return '<span class="' + p.cls + '">' + p.t + '</span>'; }).join('');
+            return typeLine(div, html);
+        }
+        return Promise.resolve();
+    }
+
+    function delay(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
+
     async function run() {
-        for (const line of lines) {
-            await renderLine(line);
-            await new Promise(r => setTimeout(r, line.typ
+        for (var i = 0; i < lines.length; i++) {
+            await renderLine(lines[i]);
+            awa
