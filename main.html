@@ -194,6 +194,40 @@
         .tech-item h4 { font-size: 0.84rem; font-weight: 700; margin-bottom: 0.25rem; }
         .tech-item p { color: var(--muted); font-size: 0.76rem; }
 
+        /* ── SPROUTS ── */
+        .sprouts { padding: 7rem 2rem; background: white; }
+        .sprouts-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+
+        .sprout-card { background: var(--subtle); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.25s; position: relative; overflow: hidden; }
+        .sprout-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #16a34a, #86efac); opacity: 0; transition: opacity 0.25s; }
+        .sprout-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(34,197,94,0.12); border-color: rgba(34,197,94,0.3); }
+        .sprout-card:hover::after { opacity: 1; }
+        .sprout-card.special { border-color: rgba(37,99,235,0.2); background: var(--blue-light); }
+        .sprout-card.special::after { background: linear-gradient(90deg, var(--blue), #60a5fa); }
+        .sprout-card.special:hover { box-shadow: 0 12px 40px rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.4); }
+
+        .sprout-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .sprout-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 100px; background: rgba(34,197,94,0.12); color: #16a34a; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem; }
+        .sprout-badge.ceo { background: rgba(37,99,235,0.12); color: var(--blue); }
+        .sprout-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem; letter-spacing: -0.02em; }
+        .sprout-name-en { font-size: 0.78rem; color: var(--muted); font-weight: 600; margin-bottom: 0.8rem; letter-spacing: 0.04em; }
+        .sprout-card p { color: var(--muted); font-size: 0.86rem; line-height: 1.65; margin-bottom: 1.4rem; }
+        .sprout-link { display: inline-flex; align-items: center; gap: 0.3rem; color: #16a34a; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: gap 0.2s; }
+        .sprout-link.blue { color: var(--blue); }
+        .sprout-link:hover { gap: 0.55rem; }
+
+        .sprout-info { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+        .sprout-dot { width: 6px; height: 6px; border-radius: 50%; background: #16a34a; }
+        .sprout-status { font-size: 0.72rem; color: #16a34a; font-weight: 600; }
+
+        .sprouts-intro { max-width: 1100px; margin: 0 auto 3rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; }
+        .sprouts-intro-text {}
+        .sprouts-apply { background: var(--subtle); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.5rem; font-size: 0.82rem; color: var(--muted); line-height: 1.7; flex-shrink: 0; max-width: 280px; }
+        .sprouts-apply strong { color: var(--text); font-weight: 700; display: block; margin-bottom: 0.3rem; }
+
+        @media (max-width: 1024px) { .sprouts-grid { grid-template-columns: 1fr 1fr; } .sprouts-intro { flex-direction: column; } .sprouts-apply { max-width: 100%; } }
+        @media (max-width: 768px) { .sprouts-grid { grid-template-columns: 1fr; } }
+
         /* ── FOOTER ── */
         footer { background: var(--text); padding: 4rem 2rem 2rem; }
         .footer-inner { max-width: 1200px; margin: 0 auto; }
@@ -268,6 +302,7 @@
                             <div class="dd-desc">AOAO Studio 자회사. 대형 프로젝트 전문 개발 스튜디오</div>
                             <span class="dd-tag teal">🏢 대형 프로젝트</span>
                         </a>
+
                     </div>
                 </div>
             </div>
@@ -393,6 +428,54 @@
         </div>
     </section>
 
+    <section class="sprouts" id="our-games">
+        <div class="s-label">Games</div>
+        <h2 class="s-title">우리들의 게임 🎮</h2>
+        <p class="s-desc">AOAO Studio가 직접 만들어가는 대형 게임 프로젝트들입니다.</p>
+
+        <div class="sprouts-grid">
+            <!-- KWJ game card -->
+            <div class="sprout-card special">
+                <div class="sprout-icon">🕹️</div>
+                <span class="sprout-badge" style="background:rgba(37,99,235,0.12);color:var(--blue)">KWJ</span>
+                <h3>김우준의 게임</h3>
+                <div class="sprout-name-en">KWJ · Kim Woojun</div>
+                <p>AOAO Studio와 함께 만들어가는 웹 기반 게임 프로젝트. 지금 바로 플레이해보세요.</p>
+                <a href="https://aoao-game-1.onrender.com" class="sprout-link blue" target="_blank">게임 하러 가기 →</a>
+                <div class="sprout-info" style="margin-top:1rem">
+                    <div class="sprout-dot" style="background:var(--blue)"></div>
+                    <span class="sprout-status" style="color:var(--blue)">운영 중</span>
+                </div>
+            </div>
+
+            <!-- Coming soon 2 -->
+            <div class="sprout-card">
+                <div class="sprout-icon">🚧</div>
+                <span class="sprout-badge" style="background:rgba(100,116,139,0.1);color:#64748b">Coming Soon</span>
+                <h3>준비 중</h3>
+                <div class="sprout-name-en">In Development</div>
+                <p>현재 개발 중인 게임 프로젝트입니다. 곧 공개됩니다.</p>
+                <div class="sprout-info">
+                    <div class="sprout-dot" style="background:#d1d5db"></div>
+                    <span class="sprout-status" style="color:#94a3b8">개발 중</span>
+                </div>
+            </div>
+
+            <!-- Coming soon 3 -->
+            <div class="sprout-card">
+                <div class="sprout-icon">🚧</div>
+                <span class="sprout-badge" style="background:rgba(100,116,139,0.1);color:#64748b">Coming Soon</span>
+                <h3>준비 중</h3>
+                <div class="sprout-name-en">In Development</div>
+                <p>현재 개발 중인 게임 프로젝트입니다. 곧 공개됩니다.</p>
+                <div class="sprout-info">
+                    <div class="sprout-dot" style="background:#d1d5db"></div>
+                    <span class="sprout-status" style="color:#94a3b8">개발 중</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-inner">
             <div class="footer-top">
@@ -410,6 +493,7 @@
                     <a href="https://aoao-studio-data.onrender.com/" target="_blank">AOAO Data</a>
                     <a href="https://aoao-studio-auth.onrender.com/" target="_blank">계정 관리 🔐</a>
                     <a href="https://aoao-copung-studio.onrender.com" target="_blank">코평 🏗️</a>
+                    <a href="#sprouts">우리들의 게임 🎮</a>
                 </div>
                 <div class="f-col">
                     <h4>Resources</h4>
@@ -425,6 +509,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 AOAO Studio. Built by young developers.</p>
+                <p style="color:#334155;font-size:0.78rem;">🎮 KWJ · 김우준</p>
                 <p>Made with ❤️ in Korea</p>
             </div>
         </div>
