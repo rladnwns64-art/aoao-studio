@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AOAO Studio - AI Technology Company</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -228,6 +229,34 @@
         @media (max-width: 1024px) { .sprouts-grid { grid-template-columns: 1fr 1fr; } .sprouts-intro { flex-direction: column; } .sprouts-apply { max-width: 100%; } }
         @media (max-width: 768px) { .sprouts-grid { grid-template-columns: 1fr; } }
 
+        /* ── GAME CAROUSEL ── */
+        .game-carousel-wrap { max-width: 1100px; margin: 0 auto; position: relative; overflow: hidden; padding: 8px 0; }
+        .game-carousel-track { display: flex; gap: 1.3rem; transition: transform 0.5s cubic-bezier(0.25,0.8,0.25,1); }
+        .game-slide { min-width: calc(33.333% - 0.87rem); flex-shrink: 0; }
+        @media (max-width: 1024px) { .game-slide { min-width: calc(50% - 0.65rem); } }
+        @media (max-width: 768px) { .game-slide { min-width: 100%; } }
+
+        .game-card-api { background: var(--subtle); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.25s; position: relative; height: 100%; cursor: pointer; }
+        .game-card-api::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), #60a5fa); opacity: 0; transition: opacity 0.25s; }
+        .game-card-api:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.4); }
+        .game-card-api:hover::after { opacity: 1; }
+
+        .game-card-thumb { width: 100%; height: 240px; object-fit: cover; background: var(--border); display: block; }
+        .game-card-body { padding: 1.4rem; }
+        .game-card-cat { display: inline-block; font-size: 0.62rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 100px; background: rgba(37,99,235,0.12); color: var(--blue); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.7rem; }
+        .game-card-api h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .game-card-api .game-card-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.65; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .game-card-bottom { display: flex; align-items: center; justify-content: space-between; }
+        .game-card-hearts { display: flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--pink); font-weight: 600; }
+        .game-card-link { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.82rem; transition: gap 0.2s; }
+        .game-card-link:hover { gap: 0.55rem; }
+
+        .carousel-nav { display: flex; justify-content: center; gap: 0.6rem; margin-top: 2rem; }
+        .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: all 0.25s; padding: 0; }
+        .carousel-dot.active { background: var(--blue); width: 24px; border-radius: 4px; }
+
+        .game-loading { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.9rem; }
+
         /* ── FOOTER ── */
         footer { background: var(--text); padding: 4rem 2rem 2rem; }
         .footer-inner { max-width: 1200px; margin: 0 auto; }
@@ -433,47 +462,11 @@
         <h2 class="s-title">우리들의 게임 🎮</h2>
         <p class="s-desc">AOAO Studio가 직접 만들어가는 대형 게임 프로젝트들입니다.</p>
 
-        <div class="sprouts-grid">
-            <!-- KWJ game card -->
-            <div class="sprout-card special">
-                <div class="sprout-icon">🕹️</div>
-                <span class="sprout-badge" style="background:rgba(37,99,235,0.12);color:var(--blue)">KWJ</span>
-                <h3>김우준의 게임</h3>
-                <div class="sprout-name-en">KWJ · Kim Woojun</div>
-                <p>AOAO Studio와 함께 만들어가는 웹 기반 게임 프로젝트. 지금 바로 플레이해보세요.</p>
-                <a href="https://aoao-game-1.onrender.com" class="sprout-link blue" target="_blank">게임 하러 가기 →</a>
-                <div class="sprout-info" style="margin-top:1rem">
-                    <div class="sprout-dot" style="background:var(--blue)"></div>
-                    <span class="sprout-status" style="color:var(--blue)">운영 중</span>
-                </div>
-            </div>
-
-            <!-- Coming soon 2 -->
-            <div class="sprout-card">
-                <div class="sprout-icon">🚧</div>
-                <span class="sprout-badge" style="background:rgba(100,116,139,0.1);color:#64748b">Coming Soon</span>
-                <h3>준비 중</h3>
-                <div class="sprout-name-en">In Development</div>
-                <p>현재 개발 중인 게임 프로젝트입니다. 곧 공개됩니다.</p>
-                <div class="sprout-info">
-                    <div class="sprout-dot" style="background:#d1d5db"></div>
-                    <span class="sprout-status" style="color:#94a3b8">개발 중</span>
-                </div>
-            </div>
-
-            <!-- Coming soon 3 -->
-            <div class="sprout-card">
-                <div class="sprout-icon">🚧</div>
-                <span class="sprout-badge" style="background:rgba(100,116,139,0.1);color:#64748b">Coming Soon</span>
-                <h3>준비 중</h3>
-                <div class="sprout-name-en">In Development</div>
-                <p>현재 개발 중인 게임 프로젝트입니다. 곧 공개됩니다.</p>
-                <div class="sprout-info">
-                    <div class="sprout-dot" style="background:#d1d5db"></div>
-                    <span class="sprout-status" style="color:#94a3b8">개발 중</span>
-                </div>
-            </div>
+        <div class="game-carousel-wrap" id="gameCarouselWrap">
+            <div class="game-loading" id="gameLoading">🎮 게임을 불러오는 중...</div>
+            <div class="game-carousel-track" id="gameTrack"></div>
         </div>
+        <div class="carousel-nav" id="carouselNav"></div>
     </section>
 
     <footer>
@@ -515,7 +508,146 @@
         </div>
     </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+<script>
+// ── Game Carousel (Supabase API) ──
+(function() {
+    const SB_URL = 'https://alnazztrdhpkyclkaklv.supabase.co';
+    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsbmF6enRyZGhwa3ljbGtha2x2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3MzIwNDgsImV4cCI6MjA4NDMwODA0OH0.mUvc6zTV-xNhuBlC0iseVKX1WeNvkGgV_wO4Yl0dGxA';
+
+    const categories = {
+        'action': '액션', 'adventure': '어드벤처', 'puzzle': '퍼즐',
+        'racing': '레이싱', 'sports': '스포츠', 'arcade': '아케이드'
+    };
+
+    const placeholderSVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' fill='%23e2e8f0'%3E%3Crect width='400' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='40' fill='%2394a3b8'%3E🎮%3C/text%3E%3C/svg%3E";
+
+    let currentIdx = 0;
+    let slidesPerView = 3;
+    let totalPages = 1;
+    let autoTimer = null;
+
+    function getSlidesPerView() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+    }
+
+    function renderCard(game) {
+        const isNew = (new Date() - new Date(game.created_at)) < 7 * 24 * 60 * 60 * 1000;
+        const isHot = (game.hearts || 0) > 10;
+        const cat = categories[game.category] || '게임';
+        const thumb = game.thumbnail_url || placeholderSVG;
+        const badge = isHot ? '<span style="position:absolute;top:10px;right:10px;background:#ef4444;color:white;font-size:0.6rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:100px;">HOT 🔥</span>' :
+                      isNew ? '<span style="position:absolute;top:10px;right:10px;background:var(--blue);color:white;font-size:0.6rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:100px;">NEW</span>' : '';
+
+        return '<div class="game-slide"><a href="https://aoao-gmae-studio.onrender.com/" target="_blank" style="text-decoration:none;color:inherit;display:block;"><div class="game-card-api">' +
+            '<div style="position:relative;">' +
+                '<img class="game-card-thumb" src="' + thumb + '" alt="' + (game.title||'') + '" onerror="this.src=\'' + placeholderSVG + '\'">' +
+                badge +
+            '</div>' +
+            '<div class="game-card-body">' +
+                '<span class="game-card-cat">' + cat + '</span>' +
+                '<h3>' + (game.title||'제목 없음') + '</h3>' +
+                (game.description ? '<p class="game-card-desc">' + game.description + '</p>' : '') +
+                '<div class="game-card-bottom">' +
+                    '<span class="game-card-hearts">❤️ ' + (game.hearts||0) + '</span>' +
+                '</div>' +
+            '</div>' +
+        '</div></a></div>';
+    }
+
+    function renderDots() {
+        var nav = document.getElementById('carouselNav');
+        nav.innerHTML = '';
+        for (var i = 0; i < totalPages; i++) {
+            var dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (i === currentIdx ? ' active' : '');
+            dot.setAttribute('data-idx', i);
+            dot.onclick = function() {
+                currentIdx = parseInt(this.getAttribute('data-idx'));
+                slideTo(currentIdx);
+            };
+            nav.appendChild(dot);
+        }
+    }
+
+    function slideTo(idx) {
+        currentIdx = idx;
+        var track = document.getElementById('gameTrack');
+        var slideW = track.querySelector('.game-slide');
+        if (!slideW) return;
+        var gap = 20.8;
+        var moveW = (slideW.offsetWidth + gap) * slidesPerView * idx;
+        track.style.transform = 'translateX(-' + moveW + 'px)';
+        renderDots();
+    }
+
+    function resetAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+        autoTimer = setInterval(function() {
+            currentIdx++;
+            if (currentIdx >= totalPages) currentIdx = 0;
+            slideTo(currentIdx);
+        }, 4000);
+    }
+
+    async function loadGames() {
+        try {
+            var res = await fetch(SB_URL + '/rest/v1/games?select=*&order=created_at.desc', {
+                headers: {
+                    'apikey': SB_KEY,
+                    'Authorization': 'Bearer ' + SB_KEY
+                }
+            });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            var games = await res.json();
+
+            var filtered = games.filter(function(g) {
+                return g.title;
+            });
+
+            if (filtered.length === 0) {
+                document.getElementById('gameLoading').textContent = '아직 등록된 게임이 없습니다.';
+                return;
+            }
+
+            document.getElementById('gameLoading').style.display = 'none';
+
+            var track = document.getElementById('gameTrack');
+            track.innerHTML = filtered.map(renderCard).join('');
+
+            slidesPerView = getSlidesPerView();
+            totalPages = Math.ceil(filtered.length / slidesPerView);
+            if (totalPages < 1) totalPages = 1;
+            currentIdx = 0;
+
+            renderDots();
+            resetAuto();
+        } catch (e) {
+            console.error('Game load error:', e);
+            document.getElementById('gameLoading').textContent = '게임을 불러올 수 없습니다.';
+        }
+    }
+
+    window.addEventListener('resize', function() {
+        var newSpv = getSlidesPerView();
+        if (newSpv !== slidesPerView) {
+            slidesPerView = newSpv;
+            var track = document.getElementById('gameTrack');
+            var total = track.querySelectorAll('.game-slide').length;
+            totalPages = Math.ceil(total / slidesPerView);
+            if (currentIdx >= totalPages) currentIdx = totalPages - 1;
+            slideTo(currentIdx);
+        }
+    });
+
+    loadGames();
+})();
+</script>
+
+<script>
 (function() {
     var lines = [
         { type: 'prompt', text: 'python aoao_studio.py' },
