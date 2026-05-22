@@ -200,6 +200,8 @@
     @keyframes grow { to { width: 100%; } }
     body.out { animation: fadeOut .5s ease forwards; }
     @keyframes fadeOut { to { opacity: 0; } }
+
+
   </style>
 </head>
 <body>
@@ -248,16 +250,47 @@ const headers = {
 };
 
 // =====================================================
-// IP 가져오기 (공개 API)
+// IP 가져오기 (다중 폴백)
 // =====================================================
-async function getIP() {
+async function fetchWithTimeout(url, ms = 3000) {
+  const ctrl = new AbortController();
+  const tid = setTimeout(() => ctrl.abort(), ms);
   try {
-    const res = await fetch('https://api.ipify.org?format=json');
-    const data = await res.json();
-    return data.ip || 'unknown';
+    const res = await fetch(url, { signal: ctrl.signal });
+    clearTimeout(tid);
+    return res;
   } catch {
-    return 'unknown';
+    clearTimeout(tid);
+    throw new Error('timeout');
   }
+}
+
+async function getIP() {
+  const sources = [
+    { url: 'https://api.ipify.org?format=json',        parse: d => d.ip },
+    { url: 'https://api64.ipify.org?format=json',      parse: d => d.ip },
+    { url: 'https://ipapi.co/json/',                    parse: d => d.ip },
+    { url: 'https://ipinfo.io/json',                    parse: d => d.ip },
+    { url: 'https://api.seeip.org/jsonip',              parse: d => d.ip },
+  ];
+
+  for (const src of sources) {
+    try {
+      const res = await fetchWithTimeout(src.url, 3000);
+      const data = await res.json();
+      const ip = src.parse(data);
+      if (ip && ip !== 'unknown') return ip;
+    } catch { /* 다음 소스 시도 */ }
+  }
+
+  // 최후의 수단: text 방식
+  try {
+    const res = await fetchWithTimeout('https://api.ipify.org', 3000);
+    const ip = (await res.text()).trim();
+    if (ip) return ip;
+  } catch {}
+
+  return 'unknown';
 }
 
 // =====================================================
@@ -297,19 +330,23 @@ async function logVisit(ip) {
 // =====================================================
 // 메인 흐름
 // =====================================================
+function goMain() {
+  document.body.classList.add('out');
+  setTimeout(() => { window.location.href = REDIRECT_TO; }, 500);
+}
+
 async function init() {
   const ip = await getIP();
   const blocked = await isBlocked(ip);
 
   if (blocked) {
-    // 차단 화면 표시
     document.getElementById('mainWrap').style.display = 'none';
     document.getElementById('blockedScreen').classList.add('show');
-    return; // 리다이렉트 없음
+    return;
   }
 
-  // 방문 기록
-  await logVisit(ip);
+  // 방문 기록 (기다리지 않고 병렬 처리)
+  logVisit(ip);
 
   // 프로그레스 바 애니메이션 시작
   const fill = document.getElementById('progressFill');
@@ -318,11 +355,8 @@ async function init() {
     requestAnimationFrame(() => { fill.style.width = '100%'; });
   });
 
-  // 6초 후 리다이렉트
-  setTimeout(() => {
-    document.body.classList.add('out');
-    setTimeout(() => { window.location.href = REDIRECT_TO; }, 500);
-  }, 6000);
+  // 비동기 작업 완료, 6초 후 자동 리다이렉트
+  setTimeout(goMain, 6000);
 }
 
 // =====================================================
